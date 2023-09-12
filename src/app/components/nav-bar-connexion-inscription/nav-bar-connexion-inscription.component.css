@@ -1,0 +1,15 @@
+.navbar {
+    background-color: #FFA500;
+}
+
+.btnHome {
+    background-color: #643E2B;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+}
+
+.command{
+    display: flex;
+    justify-content: space-between;
+}

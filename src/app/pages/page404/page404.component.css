@@ -1,0 +1,23 @@
+*, *::after, *::before {
+    background-color: #FEFEE2;
+}
+
+.error {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.message {
+    font-size: 2rem;
+}
+
+.fullheight {
+    height: 85vh;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
