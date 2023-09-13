@@ -13,6 +13,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarConnexionInscriptionComponent } from './components/nav-bar-connexion-inscription/nav-bar-connexion-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     Page404Component,
     FooterComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRoutingModule],
+  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
