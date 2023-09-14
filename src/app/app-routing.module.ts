@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from './pages/page404/page404.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MessageComponent } from './pages/message/message.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';

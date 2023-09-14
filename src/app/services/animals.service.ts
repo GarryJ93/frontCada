@@ -26,7 +26,11 @@ export class AnimalsService {
     return this.http.post<Animals>(
       'http://localhost:3000/api/animals',
       Animals,
+<<<<<<< HEAD
       { headers: headers },
+=======
+      { headers: headers }
+>>>>>>> 6cad523899fa862edfaa22224432c8d9068061b2
     );
   }
 
@@ -34,7 +38,11 @@ export class AnimalsService {
     // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
     return this.http.patch<Animals>(
       `http://localhost:3000/api/animals/${id}`,
+<<<<<<< HEAD
       updateData,
+=======
+      updateData
+>>>>>>> 6cad523899fa862edfaa22224432c8d9068061b2
     );
   }
 
