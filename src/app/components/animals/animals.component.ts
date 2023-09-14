@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Animals } from 'src/app/models/animals';
+import { AnimalsService } from 'src/app/services/animals.service';
 
 @Component({
   selector: 'app-animals',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./animals.component.css']
 })
 export class AnimalsComponent {
+  isEditing =false;
+  animal!: Animals;
+
+  // @Input() pets!: Animals[];
+  @Input() pet!:Animals;
+
+  
+
+  toggleEdit(){
+    this.isEditing= !this.isEditing;
+  }
 
 }

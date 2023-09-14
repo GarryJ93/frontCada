@@ -15,6 +15,7 @@ import { Page404Component } from './pages/page404/page404.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnimalsComponent } from './components/animals/animals.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AnimalsComponent } from './components/animals/animals.component';
     FooterComponent,
     AnimalsComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

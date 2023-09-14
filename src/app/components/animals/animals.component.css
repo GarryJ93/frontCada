@@ -17,3 +17,19 @@ button{
     color: white;
     border: none;
 }
+
+.profil{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.animal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input{
+    width: 200px;
+}

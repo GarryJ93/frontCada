@@ -3,7 +3,33 @@
     <h3>Animaux :</h3>
     <div class="btn">
         <button>Ajouter</button>
-        <button>Modifier</button>
+        <button (click)="toggleEdit()">{{isEditing ? 'Sauvegarder' : 'Modifier'}}</button>
         <button>Supprimer</button>
     </div>
+</div>
+<div class="profil">
+    <img src="" alt="image_de_l'animal">
+
+
+
+<div class="animal">
+    
+
+    <label for="name">Prénom :</label>
+    <div *ngIf="!isEditing">{{pet.name}}</div>
+    <input *ngIf="isEditing" [ngModel]="pet.name">
+
+    <label for="species">Espèce :</label>
+    <div *ngIf="!isEditing">{{pet.species}}</div>
+    <input *ngIf="isEditing" [ngModel]="pet.species">
+
+    <label for="breed">Race :</label>
+    <div *ngIf="!isEditing">{{pet.breed}}</div>
+    <input *ngIf="isEditing" [ngModel]="pet.breed">
+
+    <label for="age">Age :</label>
+    <div *ngIf="!isEditing">{{pet.age}}</div>
+    <input *ngIf="isEditing" [ngModel]="pet.age">
+
+</div>
 </div>

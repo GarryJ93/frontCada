@@ -37,4 +37,5 @@ export class AnimalsService {
     return this.http.delete(`http://localhost:3000/api/animals/${id}`, { headers: headers })
   }
 
+
 }
