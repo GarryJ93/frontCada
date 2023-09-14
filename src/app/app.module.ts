@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { ProfileCardsComponent } from './components/profile-cards/profile-cards.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
     ProfileCardsComponent,
     ProfileListComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRoutingModule],
+  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
