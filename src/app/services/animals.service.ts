@@ -9,13 +9,15 @@ import { Observable } from 'rxjs';
 export class AnimalsService {
   animals: Animals[]=[];
 
+
+
   constructor(private http: HttpClient) { }
 
   getAllAnimals(): Observable<Animals[]>{
     return this.http.get<Animals[]>('http://localhost:3000/api/animals')
   }
 
-  getAnimalsById(id: number): Observable<Animals> {
+  getAnimalById(id: number): Observable<Animals> {
     return this.http.get<Animals>(`http://localhost:3000/api/animals/${id}`);
   }
 
@@ -26,7 +28,7 @@ export class AnimalsService {
 
   modifyAnimals(id: number, updateData: Animals): Observable<Animals> {
     // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
-    return this.http.put<Animals>(`http://localhost:3000/api/animals/${id}`, updateData);
+    return this.http.patch<Animals>(`http://localhost:3000/api/animals/${id}`, updateData);
   }
 
   deleteAnimals(id: number) {
