@@ -13,6 +13,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarConnexionInscriptionComponent } from './components/nav-bar-connexion-inscription/nav-bar-connexion-inscription.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { ProfileCardsComponent } from './components/profile-cards/profile-cards.component';
+import { ProfileListComponent } from './components/profile-list/profile-list.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { FooterComponent } from './components/footer/footer.component';
     NavBarConnexionInscriptionComponent,
     Page404Component,
     FooterComponent,
+    FilterBarComponent,
+    ProfileCardsComponent,
+    ProfileListComponent,
   ],
   imports: [BrowserModule, NgbModule, AppRoutingModule],
   providers: [],
