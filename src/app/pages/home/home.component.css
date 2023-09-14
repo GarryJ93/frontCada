@@ -1,0 +1,21 @@
+.accueil {
+background-color: #FEFEE2;
+height: 85vh;
+}
+
+.center-pic {
+border-radius: 45px;
+height: 50%;
+width: 100%;
+}
+
+.picture-1 {
+    border-radius: 0 45px 45px 0; 
+    height: 10%;
+    width: 40%; 
+}
+ .picture-2 {
+    border-radius: 45px 0 0 45px;
+    height: 10%;
+    width: 40%;
+ }
