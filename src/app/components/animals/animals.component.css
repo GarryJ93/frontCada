@@ -1,0 +1,19 @@
+.btn {
+  display: flex;
+  justify-content: right;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+button{
+    margin-left: 20px;
+    border-radius: 45px;
+    background-color: #643E2B ;
+    color: white;
+    border: none;
+}

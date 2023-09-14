@@ -21,9 +21,9 @@ export class AnimalsService {
     return this.http.get<Animals>(`http://localhost:3000/api/animals/${id}`);
   }
 
-  addAnimals(Animals: Animals): Observable<Animals> {
+  addAnimals(animals: Animals): Observable<Animals> {
     const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') })
-    return this.http.post<Animals>('http://localhost:3000/api/animals', Animals, { headers: headers });
+    return this.http.post<Animals>('http://localhost:3000/api/animals', animals, { headers: headers });
   }
 
   modifyAnimals(id: number, updateData: Animals): Observable<Animals> {

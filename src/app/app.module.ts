@@ -14,6 +14,7 @@ import { NavBarConnexionInscriptionComponent } from './components/nav-bar-connex
 import { Page404Component } from './pages/page404/page404.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnimalsComponent } from './components/animals/animals.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarConnexionInscriptionComponent,
     Page404Component,
     FooterComponent,
+    AnimalsComponent,
   ],
   imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule],
   providers: [],
