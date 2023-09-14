@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AcceuilComponent } from './pages/acceuil/acceuil.component';
+import { AccueilComponent } from './pages/accueil/accueil.component';
 import { MessageComponent } from './pages/message/message.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    AcceuilComponent,
+    AccueilComponent,
     MessageComponent,
     ProfileComponent,
     SigninComponent,

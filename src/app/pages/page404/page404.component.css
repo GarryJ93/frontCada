@@ -1,6 +1,4 @@
-*, *::after, *::before {
-    background-color: #FEFEE2;
-}
+
 
 .error {
     font-size: 3rem;
@@ -11,9 +9,7 @@
     font-size: 2rem;
 }
 
-.fullheight {
-    height: 85vh;
-}
+
 
 .img-fluid {
     max-width: 100%;
