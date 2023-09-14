@@ -11,7 +11,7 @@ export class AnimalsComponent {
   isEditing =false;
   animal!: Animals;
 
-  // @Input() pets!: Animals[];
+  @Input() pets!: Animals[];
   @Input() pet!:Animals;
 
   

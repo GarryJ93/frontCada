@@ -20,7 +20,7 @@ export class ProfileComponent {
 
 
   ngOnInit() {
-    this.
+
     this.animalsService.getAllAnimals().subscribe(animalData =>{
       this.animalsToDisplay = animalData;
       console.log(animalData);
