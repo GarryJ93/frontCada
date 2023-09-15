@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MessageComponent } from './pages/message/message.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: "full"},
