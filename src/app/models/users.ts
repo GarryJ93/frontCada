@@ -7,6 +7,6 @@ export interface Users {
     city: string;
     password: string;
     departement: number;
-    // id_photo: number;
-    // id_gender_user: number;
+    id_photo: number;
+    id_gender_user: number;
 }

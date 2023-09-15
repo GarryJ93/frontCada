@@ -4,44 +4,37 @@
         <img id="photo" src="../../../assets/chien-embrasse-par-couple.jpg"
             alt="photo d'un couple qui embrasse simultanement un chien">
     </div>
-    <div class="form_class">
-        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-            <label>
-              <input formControlName="firstName" placeholder="First Name">
-            </label>
-          
-            <label>
-              <input formControlName="lastName" placeholder="Last Name">
-            </label>
-          
-            <label>
-              <input formControlName="email" placeholder="Email">
-            </label>
-          
-            <label>
-              <input type="password" formControlName="password" placeholder="Password">
-            </label>
-          
-            <label>
-              <input formControlName="departement" placeholder="Department">
-            </label>
-          
-            <label>
-              <input formControlName="city" placeholder="City">
-            </label>
-          
-            <label>
-              <textarea formControlName="description" placeholder="Description">
-              </textarea>
-            </label>
-          
-            <label>
-              Photo:
-              <input type="file" formControlName="photo">
-            </label>
-          
-            <button type="submit">Submit</button>
+
+<div class="d-flex justify-content-center">
+        <div class="col-md-6 col-sm-12 form_group shadow p-3 mb-5 bg-white rounded">
+          <form [formGroup]="addUser" (ngSubmit)="onSubmit()" class="p-4">
+            <div class="form-group">
+              <input formControlName="firstname" class="form-control rounded" id="inputFirstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input formControlName="username" class="form-control rounded" id="inputLastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input formControlName="email" type="email" class="form-control rounded" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <input formControlName="password" type="password" class="form-control rounded" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <input formControlName="departement" type="text" class="form-control rounded" id="inputDepartment" placeholder="Département">
+            </div>
+            <div class="form-group">
+              <input formControlName="city" type="text" class="form-control rounded" id="inputCity" placeholder="City">
+            </div>
+            <div class="form-group">
+              <textarea formControlName="description" class="form-control rounded" id="inputDescription" placeholder="Description"></textarea>
+            </div>
+            <!-- <div class="form-group" id="block-photo">
+              <label for="inputPhoto" class="form-label">Photo</label>
+              <input formControlName="photo" type="file" class="form-control rounded" id="inputPhoto">
+            </div> -->
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-          
+        </div>
     </div>
 </div>
