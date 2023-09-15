@@ -1,5 +1,5 @@
 export interface Photos {
-    id_message:number;
-    name :string;
+    id_photo: number;
+    name: string;
     path: string;
 }

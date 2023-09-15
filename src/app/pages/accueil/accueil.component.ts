@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Animals } from 'src/app/models/animals';
 import { GenderUser } from 'src/app/models/gender-users';
-import { GenderUserService } from 'src/app/services/gender-users.service';
+import { Photos } from 'src/app/models/photos';
+import { Users } from 'src/app/models/users';
+import { AnimalsService } from 'src/app/services/animals.service';
+import { PhotosService } from 'src/app/services/photos.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-accueil',
@@ -9,23 +14,47 @@ import { GenderUserService } from 'src/app/services/gender-users.service';
 })
 export class AccueilComponent {
 
-  genderToDisplay!: GenderUser[];
-  allGenderUser: GenderUser[] = [];
+  userToDisplay!: Users[];
+  allUsers: Users[] = [];
+  photosToDisplay!: Photos[];
+  allPhotos: Photos[] = [];
+  animalsToDisplay!: Animals[];
+  allAnimals: Animals[] = [];
   
 
-  constructor(private genderUserService: GenderUserService) { }
+  constructor(private usersService: UsersService, private photoService: PhotosService, private animalsService: AnimalsService) { }
 
   ngOnInit() {
-    this.genderUserService.getGenderUsers().subscribe({
+    this.usersService.getAllUsers().subscribe({
       next: (response) => {
         {
-        this.allGenderUser = [...response];
-        this.genderToDisplay = [...response];
+        this.allUsers = [...response];
+        this.userToDisplay = [...response];
       }
-      console.log(this.allGenderUser);
+      console.log(this.allUsers);
     }
       }
-    )}
+    )
+    this.photoService.getAllPhotos().subscribe({
+      next: (response) => {
+        {
+          this.allPhotos = [...response];
+          this.photosToDisplay = [...response];
+        }
+        console.log(this.allPhotos)
+      }
+    })
+
+    this.animalsService.getAllAnimals().subscribe({
+      next: (response) => {
+        {
+          this.allAnimals = [...response];
+          this.animalsToDisplay = [...response];
+        }
+        console.log(this.allAnimals);
+      },
+    });
+  }
       
   }
 
