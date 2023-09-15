@@ -1,14 +1,15 @@
-<div class="card shadow-sm" style="width: 18rem;">
+<div class="card shadow-sm" style="width: 30rem;">
         
         <div class="card-body">
+            <div class="d-flex justify-content-evenly">
+            <img *ngIf="userPicture" class="card-img-top shadow rounded float-start" src={{userPicture.path}} alt="Card image cap">
             <div>
-            <img class="card-img-top" src="" alt="Card image cap">
-            <p class="card-text">Pseudo</p>
-            <p class="card-text">Ville</p>
-        </div>
+            <p class="card-text">{{myUser.username}}</p>
+            <p class="card-text">{{myUser.city}}</p>
+        </div></div>
         <div>
-            <p>Animaux :</p>
-            <p>Nom</p>
+            <p>Animal :</p>
+            <p *ngIf="userAnimal">{{userAnimal.name}}</p>
             <p>espèce</p>
             <img src="" alt="Card image cap">
         </div>
