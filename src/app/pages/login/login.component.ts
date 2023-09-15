@@ -22,7 +22,7 @@ export class LoginComponent {
 
   OnConnect() {
     console.log('Tentative de connexion');
-    console.log('Email:', this.username);
+    console.log('Username: ', this.username);
     console.log('MDP : ', this.password);
 
     this.authService.login(this.username, this.password).subscribe({
