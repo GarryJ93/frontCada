@@ -1,0 +1,37 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.page_form {
+  padding: 0%;
+  margin: 0%;
+  display: flex;
+  flex-direction: row;
+}
+
+.form {
+  /* width: 100vh; */
+}
+
+img {
+  width: 100%;
+}
+
+.img_class {
+  width: 50%;
+}
+.form_class {
+  margin: auto;
+  /* margin-right: 0; 
+  margin-left: 0;*/
+  width: 800px; 
+}
+.form_class input{
+
+  width: 100% !important; 
+}
