@@ -17,7 +17,10 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
 import { ProfileCardsComponent } from './components/profile-cards/profile-cards.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,14 +39,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProfileCardsComponent,
     ProfileListComponent,
   ],
+
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,2 +1,4 @@
 <p>profile-list works!</p>
-<app-profile-cards></app-profile-cards>
+<div class="d-flex flex-wrap justify-content-evenly container-profiles">
+<app-profile-cards *ngFor="let user of recupUsers" [myUser]="user"></app-profile-cards>
+</div>
