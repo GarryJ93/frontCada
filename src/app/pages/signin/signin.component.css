@@ -46,6 +46,10 @@ body {
   border-radius: 10px;
 }
 
+.firstname textarea button{
+  border-radius: 45px;
+}
+
 .d-flex {
   flex: 1;
   height: 100%;
@@ -68,7 +72,7 @@ form.formcontainer {
   font-size: 110px;
   display: flex;
   justify-content: center;
-  color: #4286f4;
+  /* color: #4286f4; */
 }
 
 .formcontainer .container {
@@ -85,8 +89,8 @@ form.formcontainer {
   box-sizing: border-box;
 }
 
-.formcontainer button.btn.btn-primary {
-  background-color: #4286f4;
+.btn {
+  background-color: #ee510e;
   color: white;
   padding: 14px 0;
   margin: 10px 0;
@@ -95,7 +99,7 @@ form.formcontainer {
   width: 48%;
 }
 
-.formcontainer button.btn.btn-primary:hover {
+.btn :hover {
   opacity: 0.8;
 }
 
@@ -109,3 +113,18 @@ form.formcontainer {
   justify-content: center;
   width: 100%;
 }
+
+input{
+  border-radius: 45px;
+
+}
+
+.mytext{
+  border-radius: 15px;
+}
+
+.validbtn{
+  border-radius: 45px;
+
+}
+

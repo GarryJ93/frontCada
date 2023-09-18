@@ -54,7 +54,7 @@ export class SigninComponent {
       next: () => {
         alert('Utilisateur ajouté avec succès !');
         this.addUser.reset();
-        this.router.navigate(['/connexion']);
+        this.router.navigate(['/login']);
       },
       error: (error) => {
         console.error("Erreur lors de l'ajout de l'utilisateur", error);

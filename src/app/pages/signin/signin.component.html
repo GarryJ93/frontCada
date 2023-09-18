@@ -5,6 +5,8 @@
         <img id="photo" src="../../../assets/chien-embrasse-par-couple.jpg"
             alt="photo d'un couple qui embrasse simultanément un chien">
     </div>
+
+
     <div class="d-flex justify-content-center">
         <div class="col-md-6 col-sm-12 form_group p-3 mb-5 rounded">
             <form [formGroup]="addUser" (ngSubmit)="onSubmit()" class="formcontainer">
@@ -13,34 +15,26 @@
                     <i class="fas fa-user-circle"></i>
                 </div>
                 <div class="container">
-                    <div class="form-group">
-                        <input formControlName="firstname" class="form-control rounded" id="inputFirstName" placeholder="Nom">
-                    </div>
-                    <div class="form-group">
-                        <input formControlName="username" class="form-control rounded" id="inputLastName" placeholder="Prenom">
-                    </div>
-                    <div class="form-group">
-                        <input formControlName="email" type="email" class="form-control rounded" id="inputEmail" placeholder=" E-mail">
-                    </div>
-                    <div class="form-group">
-                        <input formControlName="password" type="password" class="form-control rounded" id="exampleInputPassword1" placeholder="Mot de Passe">
-                    </div>
-                    <div class="form-group">
-                        <input formControlName="departement" type="text" class="form-control rounded" id="inputDepartment" placeholder="Département">
-                    </div>
-                    <div class="form-group">
-                        <input formControlName="city" type="text" class="form-control rounded" id="inputCity" placeholder="Ville">
-                    </div>
-                    <div class="form-group">
-                        <textarea formControlName="description" class="form-control rounded" id="inputDescription" placeholder="Déscription"></textarea>
-                    </div>
-                    <div class="form-group" id="block-photo">
-                        <label for="inputPhoto" class="form-label">Photo</label>
-                        <input formControlName="photo" type="text" class="form-control rounded" id="inputPhoto">
-                    </div>
-                    <div class="btn_signin">
-                      <button type="submit" class="btn btn-primary"><strong>s'inscrire</strong></button>
-                    </div>
+                    <input formControlName="firstname" class="form-control shadow" id="inputFirstName"
+                        placeholder="Nom">
+                    <input formControlName="username" class="form-control shadow" id="inputLastName"
+                        placeholder="Prenom">
+                    <input formControlName="email" type="email" class="form-control shadow" id="inputEmail"
+                        placeholder=" E-mail">
+                    <input formControlName="password" type="password" class="form-control shadow"
+                        id="exampleInputPassword1" placeholder="Mot de Passe">
+                    <input formControlName="departement" type="text" class="form-control shadow" id="inputDepartment"
+                        placeholder="Département">
+                    <input formControlName="city" type="text" class="form-control shadow" id="inputCity"
+                        placeholder="Ville">
+
+                    <input formControlName="photo" type="text" class="form-control shadow" id="inputPhoto">
+
+                    <textarea formControlName="description" class="form-control shadow mytext" rows="3" id="inputDescription"
+                        placeholder="Déscription"></textarea>
+                </div>
+                <div class="btn_signin ">
+                    <button type="submit" class="btn  shadow-lg validbtn"><strong >s'inscrire</strong></button>
                 </div>
             </form>
         </div>
