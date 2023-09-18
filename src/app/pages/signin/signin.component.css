@@ -1,128 +1,111 @@
+/* Réinitialisation des marges et des espacements pour tous les éléments */
 * {
-  padding: 0%;
-  margin: 0%;
-}
-body {
-  height: 100%;
-  width: 100%;
-}
-
-.page_form {
-  padding: 0%;
-  margin: 0%;
-  display: flex;
-  flex-direction: row;
-}
-
-.form {
-  /* width: 100vh; */
-}
-
-img {
-  width: 100%;
-}
-
-.img_class {
-  width: 50%;
-}
-.form_class {
-  margin: auto;
-  /* margin-right: 0; 
-  margin-left: 0;*/
-  width: 800px; 
-}
-.form_class input{
-
-  width: 100% !important; 
-}
-
-.col-md-6 {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-/* ------------------------------------------ */
-
-html, body {
-  min-height: 100%;
   padding: 0;
   margin: 0;
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 14px;
-  color: #666;
-  }
-  h1 {
-  margin: 0 0 20px;
-  font-weight: 400;
-  color: #1c87c9;
-  }
-  p {
-  margin: 0 0 5px;
-  }
-  .main-block {
+}
+
+/* Configuration du corps de la page */
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Configuration du conteneur principal */
+.page_form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Configuration de l'image */
+.img_class img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 100px 100px 0px;
+}
+
+
+/* Configuration du conteneur de l'image */
+.img_class {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  /* margin-top: 50px; */
+  height: 100%;
+}
+
+
+
+/* Configuration du conteneur du formulaire */
+.form_group {
+  flex: 1;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  padding: 3%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+.d-flex {
+  flex: 1;
+  height: 100%;
+  margin: auto 20px;
+}
+
+/* Styles du formulaire */
+form.formcontainer {
+  /* border: 5px solid #f1f1f1; */
+  text-align: center;
+  margin: 24px 50px 12px;
+  padding: 16px 0;
+}
+
+.formcontainer h1 {
+  text-align: center;
+}
+
+.formcontainer .icon {
+  font-size: 110px;
+  display: flex;
+  justify-content: center;
+  color: #4286f4;
+}
+
+.formcontainer .container {
+  text-align: left;
+  padding: 16px 0;
+}
+
+.formcontainer input.form-control {
+  width: 100%;
+  padding: 16px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+
+.formcontainer button.btn.btn-primary {
+  background-color: #4286f4;
+  color: white;
+  padding: 14px 0;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+}
+
+.formcontainer button.btn.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.container {
   display: flex;
   flex-direction: column;
+}
+
+.btn_signin {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100%;
-  /* background: #1c87c9; */
-  }
-  form {
-  padding: 25px;
-  margin: 25px;
-  box-shadow: 0 2px 5px #f5f5f5; 
-  background: #f5f5f5; 
-  }
-  .fas {
-  margin: 25px 10px 0;
-  font-size: 72px;
-  color: #fff;
-  }
-  .fa-envelope {
-  transform: rotate(-20deg);
-  }
-  .fa-at , .fa-mail-bulk{
-  transform: rotate(10deg);
-  }
-  input, textarea {
-  width: calc(100% - 18px);
-  padding: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #1c87c9;
-  outline: none;
-  }
-  input::placeholder {
-  color: #666;
-  }
-  button {
   width: 100%;
-  padding: 10px;
-  border: none;
-  background: #1c87c9; 
-  font-size: 16px;
-  font-weight: 400;
-  color: #fff;
-  }
-  button:hover {
-  background: #2371a0;
-  }    
-  @media (min-width: 568px) {
-  .main-block {
-  flex-direction: row;
-  }
-  .left-part, form {
-  width: 50%;
-  }
-  .fa-envelope {
-  margin-top: 0;
-  margin-left: 20%;
-  }
-  .fa-at {
-  margin-top: -10%;
-  margin-left: 65%;
-  }
-  .fa-mail-bulk {
-  margin-top: 2%;
-  margin-left: 28%;
-  }
-  }
+}

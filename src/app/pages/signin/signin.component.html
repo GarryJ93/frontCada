@@ -1,29 +1,48 @@
 <app-nav-bar-connexion-inscription></app-nav-bar-connexion-inscription>
+
 <div class="page_form">
     <div class="img_class">
         <img id="photo" src="../../../assets/chien-embrasse-par-couple.jpg"
-            alt="photo d'un couple qui embrasse simultanement un chien">
+            alt="photo d'un couple qui embrasse simultanément un chien">
     </div>
-    <div class="main-block">
-      <div class="left-part">
-        <i class="fas fa-envelope"></i>
-        <i class="fas fa-at"></i>
-        <i class="fas fa-mail-bulk"></i>
-      </div>
-      <form action="/">
-        <h1>Contact Us</h1>
-        <div class="info">
-          <input class="fname" type="text" name="name" placeholder="Full name">
-          <input type="text" name="name" placeholder="Email">
-          <input type="text" name="name" placeholder="Phone number">
-          <input type="text" name="name" placeholder="Website">
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6 col-sm-12 form_group p-3 mb-5 rounded">
+            <form [formGroup]="addUser" (ngSubmit)="onSubmit()" class="formcontainer">
+                <h1>Inscription</h1>
+                <div class="icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="container">
+                    <div class="form-group">
+                        <input formControlName="firstname" class="form-control rounded" id="inputFirstName" placeholder="Nom">
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="username" class="form-control rounded" id="inputLastName" placeholder="Prenom">
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="email" type="email" class="form-control rounded" id="inputEmail" placeholder=" E-mail">
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="password" type="password" class="form-control rounded" id="exampleInputPassword1" placeholder="Mot de Passe">
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="departement" type="text" class="form-control rounded" id="inputDepartment" placeholder="Département">
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="city" type="text" class="form-control rounded" id="inputCity" placeholder="Ville">
+                    </div>
+                    <div class="form-group">
+                        <textarea formControlName="description" class="form-control rounded" id="inputDescription" placeholder="Déscription"></textarea>
+                    </div>
+                    <div class="form-group" id="block-photo">
+                        <label for="inputPhoto" class="form-label">Photo</label>
+                        <input formControlName="photo" type="text" class="form-control rounded" id="inputPhoto">
+                    </div>
+                    <div class="btn_signin">
+                      <button type="submit" class="btn btn-primary"><strong>s'inscrire</strong></button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <p>Message</p>
-        <div>
-          <textarea rows="4"></textarea>
-        </div>
-        <button type="submit" href="/">Submit</button>
-      </form>
     </div>
-
 </div>
