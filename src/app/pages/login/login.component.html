@@ -1,1 +1,29 @@
 <app-nav-bar-connexion-inscription></app-nav-bar-connexion-inscription>
+<form [formGroup]="bioSection" (ngSubmit)="callingFunction()">
+  <h3>Connexion</h3>
+<!--
+  <label>
+    User Name:
+    <input type="text" formControlName="UserName" />
+  </label>
+  <br />
+  <label>
+    Password:
+    <input type="text" formControlName="Password" />
+  </label>
+
+  <button type="submit" [disabled]="!bioSection.valid">
+    Submit Application
+  </button> -->
+  <div class="d-flex column justify-content-center mb-3">
+    <label for="exampleFormControlInput1" class="form-label" formControlName="UserName">Username</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+
+
+  <label for="inputPassword5" class="form-label">Password</label>
+  <input type="password" id="inputPassword5" formControlName="Password" class="form-control" aria-describedby="passwordHelpBlock">
+  <div id="passwordHelpBlock" class="form-text">
+  
+  </div>  </div>
+
+</form>
