@@ -20,7 +20,7 @@ export class UsersService {
   }
 
   addUser(user: Users): Observable<Users> {
-    return this.http.post<Users>('http://localhost:3000/api/users', user);
+    return this.http.post<Users>('http://localhost:3000/api/auth/register', user);
   }
 
   modifyUsers(id: number, updateData: Users): Observable<Users> {
