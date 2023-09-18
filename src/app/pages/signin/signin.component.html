@@ -4,37 +4,26 @@
         <img id="photo" src="../../../assets/chien-embrasse-par-couple.jpg"
             alt="photo d'un couple qui embrasse simultanement un chien">
     </div>
-
-<div class="d-flex justify-content-center">
-        <div class="col-md-6 col-sm-12 form_group shadow p-3 mb-5 bg-white rounded">
-          <form [formGroup]="addUser" (ngSubmit)="onSubmit()" class="p-4">
-            <div class="form-group">
-              <input formControlName="firstname" class="form-control rounded" id="inputFirstName" placeholder="First Name">
-            </div>
-            <div class="form-group">
-              <input formControlName="username" class="form-control rounded" id="inputLastName" placeholder="Last Name">
-            </div>
-            <div class="form-group">
-              <input formControlName="email" type="email" class="form-control rounded" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <input formControlName="password" type="password" class="form-control rounded" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <input formControlName="departement" type="text" class="form-control rounded" id="inputDepartment" placeholder="Département">
-            </div>
-            <div class="form-group">
-              <input formControlName="city" type="text" class="form-control rounded" id="inputCity" placeholder="City">
-            </div>
-            <div class="form-group">
-              <textarea formControlName="description" class="form-control rounded" id="inputDescription" placeholder="Description"></textarea>
-            </div>
-            <div class="form-group" id="block-photo">
-              <label for="inputPhoto" class="form-label">Photo</label>
-              <input formControlName="photo" type="text" class="form-control rounded" id="inputPhoto">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-envelope"></i>
+        <i class="fas fa-at"></i>
+        <i class="fas fa-mail-bulk"></i>
+      </div>
+      <form action="/">
+        <h1>Contact Us</h1>
+        <div class="info">
+          <input class="fname" type="text" name="name" placeholder="Full name">
+          <input type="text" name="name" placeholder="Email">
+          <input type="text" name="name" placeholder="Phone number">
+          <input type="text" name="name" placeholder="Website">
         </div>
+        <p>Message</p>
+        <div>
+          <textarea rows="4"></textarea>
+        </div>
+        <button type="submit" href="/">Submit</button>
+      </form>
     </div>
+
 </div>
