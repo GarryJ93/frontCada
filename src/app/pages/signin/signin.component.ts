@@ -35,7 +35,8 @@ export class SigninComponent {
       departement: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      // photo: new FormControl(''),
+      id_gender_user: new FormControl('', Validators.required),
+      photo: new FormControl('', Validators.required),
     });
   }
 
@@ -48,7 +49,6 @@ export class SigninComponent {
       
     }
     newUser.id_gender_user = 2;
-    newUser.id_photo = 5;
     console.log(newUser);
     this.userService.addUser(newUser).subscribe({
       next: () => {
