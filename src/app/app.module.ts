@@ -37,21 +37,22 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     FilterBarComponent,
     ProfileCardsComponent,
-    ProfileListComponent
+    ProfileListComponent,
   ],
-    
+
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-  , FormsModule],
+    FormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi:true,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
