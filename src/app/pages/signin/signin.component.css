@@ -1,42 +1,74 @@
+/* Réinitialisation des marges et des espacements pour tous les éléments */
 * {
-  padding: 0%;
-  margin: 0%;
+  padding: 0;
+  margin: 0;
 }
+
+/* Configuration du corps de la page */
 body {
-  height: 100%;
-  width: 100%;
+  height: 100vh;  /* Fait en sorte que le corps prenne toute la hauteur de la fenêtre */
+  width: 100%;  /* Fait en sorte que le corps prenne toute la largeur de la fenêtre */
 }
 
+/* Configuration du conteneur principal */
 .page_form {
-  padding: 0%;
-  margin: 0%;
-  display: flex;
-  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  display: flex;  /* Utilise le flexbox pour la mise en page */
+  flex-direction: row;  /* Disposition horizontale des éléments */
+  width: 100%;  /* Utilise toute la largeur de l'écran */
+  
 }
 
-.form {
-  /* width: 100vh; */
-}
-
+/* Configuration de l'image */
 img {
-  width: 100%;
+  object-fit: cover;  /* Conserve les proportions de l'image */
+  height: 100%;  /* Utilise toute la hauteur du conteneur */
+  width: 100%;  /* Utilise toute la largeur du conteneur */
+  border-radius: 0px 100px 100px 0px;
+
 }
 
+/* Configuration du conteneur de l'image */
 .img_class {
-  width: 50%;
-}
-.form_class {
-  margin: auto;
-  /* margin-right: 0; 
-  margin-left: 0;*/
-  width: 800px; 
-}
-.form_class input{
+  flex: 1;  /* Prend 50% de l'espace disponible */
+  margin-top: 50px;
+  height: 100%;
 
-  width: 100% !important; 
 }
 
+/* Configuration du conteneur du formulaire */
+.form_group {
+  flex: 1;  /* Prend 50% de l'espace disponible */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Ajout d'une ombre (correction de "shadow" à "box-shadow") */
+  padding: 3%;  /* Espacement interne */
+  margin-bottom: 5%;  /* Marge en bas */
+  background-color: white;  /* Couleur de fond */
+  border-radius: 10px;  /* Coins arrondis */
+}
+
+/* Configuration pour les différents éléments de Bootstrap (si utilisés) */
 .col-md-6 {
   flex: 0 0 auto;
   width: 100%;
+}
+
+/* Configuration du formulaire */
+.form_class {
+  margin: auto;  /* Centrer le formulaire dans le conteneur */
+  width: 100%;  /* Utilise toute la largeur du conteneur */
+}
+
+/* Configuration des champs du formulaire */
+.form_class input {
+  /* width: 100% !important; */  /* À décommenter si nécessaire */
+}
+
+.d-flex{
+  flex: 1;
+  height: 100%;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
 }
