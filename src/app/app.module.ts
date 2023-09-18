@@ -18,6 +18,7 @@ import { ProfileCardsComponent } from './components/profile-cards/profile-cards.
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     ProfileListComponent
   ],
     
-  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
