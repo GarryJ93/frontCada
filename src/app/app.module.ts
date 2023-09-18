@@ -21,7 +21,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,21 +37,22 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FilterBarComponent,
     ProfileCardsComponent,
-    ProfileListComponent
+    ProfileListComponent,
   ],
-    
+
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-  , FormsModule, ReactiveFormsModule],
+    FormsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi:true,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
