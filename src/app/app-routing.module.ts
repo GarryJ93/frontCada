@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MessageComponent } from './pages/message/message.component';
+import { ConsultationComponent } from './pages/consultation/consultation.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: "full"},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'message', component: MessageComponent},
   {path: 'profil', component: ProfileComponent},
   {path: 'signin', component: SigninComponent},
-  {path:'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
+  {path: 'consultation/:id', component: ConsultationComponent},
   {path: '**', component: Page404Component}];
 
 @NgModule({

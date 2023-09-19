@@ -21,6 +21,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ConsultationComponent } from './pages/consultation/consultation.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FormsModule } from '@angular/forms';
     FilterBarComponent,
     ProfileCardsComponent,
     ProfileListComponent,
+    ConsultationComponent,
   ],
 
   imports: [
