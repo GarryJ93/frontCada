@@ -1,4 +1,5 @@
 import { Breed } from "./breed";
+import { Photos } from "./photos";
 
 export interface Animals {
   id_animals: number;
@@ -9,4 +10,5 @@ export interface Animals {
   id_photo: number;
   id_sex_animal:number;
   breed: Breed;
+  photo: Photos;
 }
