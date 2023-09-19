@@ -1,23 +1,35 @@
-<div class="card shadow-sm" style="width: 30rem;">
-        
-        <div class="card-body">
-            <div class="d-flex justify-content-evenly">
-            <!-- <img *ngIf="userPicture" class="card-img-top shadow rounded float-start" src={{myUser.photo.path}} alt="Card image cap"> -->
-            <img class="card-img-top shadow rounded float-start" src={{myUser.photo.path}}>
-            <div>
-            <p class="card-text">{{myUser.username}}</p>
-            <p class="card-text">{{myUser.departement}}</p>
-            <p class="card-text">{{myUser.city}}</p>
-            <p class="card-text">{{myUser.description}}</p>
-        </div></div>
-        <div *ngFor="let animal of myUser.animal" index = i>
-            <p>Animal :  {{animal.name }}</p>
-            <!-- <p *ngIf="userAnimal">{{userAnimal.name}}</p> -->
-            <!-- <p>{{myUser.animal[0].name}}</p> -->
-           <p>espèce : {{animal.breed.species.species}}</p>
-            <p>race :  {{animal.breed.breed}}</p>
-            <img class="card-img-top shadow rounded float-start" src={{animal.photo.path}}>
-            <img src="" alt="Card image cap">
-        </div>
-        </div>
+<div class="card shadow-sm" style="width: 16rem; height: 23rem">
+  <div class="card-body">
+    <div id="top">
+      <img
+        class="card-img-top shadow rounded float-start"
+        src="{{ myUser.photo.path }}"
+      />
+      <div class="information-block">
+        <p class="card-text user-name">{{ myUser.username }}</p>
+        <p class="card-text">{{ myUser.city }}</p>
+      </div>
+    </div>
+
+    <h3>Animal :</h3>
+
+    <div
+      
+      *ngFor="let animal of myUser.animal"
+      id="bottom"
+    >
+      <div class="information-block">
+        <p class="animal-name">{{ animal.name }}</p>
+        <p>race : {{ animal.breed.breed }}</p>
+      </div>
+      <div>
+        <img
+          class="card-img-top shadow rounded float-start"
+          src="{{ animal.photo.path }}"
+          alt="user's animal photo"
+        />
+      </div>
+    </div>
+  </div>
 </div>
+

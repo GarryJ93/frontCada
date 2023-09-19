@@ -28,8 +28,7 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe({
       next: (response: any) => {
         localStorage.setItem(('acess_token'), response.accessToken)
-        console.log(response);
-        
+        console.log(response);        
         console.log('Réponse complète du serveur :', response.accessToken);
       },
     });
