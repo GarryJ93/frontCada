@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit{
       let password = this.connexion.value.password;
   this.authService.login(username, password).subscribe({
       next: (response: any) => {
-        localStorage.setItem('access_token', response.accessToken);
+        localStorage.setItem(('acess_token'), response.accessToken)
+        console.log(response);        
         console.log('Réponse complète du serveur :', response.accessToken);
         this.router.navigate(['/accueil']);
       },
