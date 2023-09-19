@@ -1,5 +1,5 @@
 <app-nav-bar-connexion-inscription></app-nav-bar-connexion-inscription>
-<p>Connexion</p>
+<!-- <p>Connexion</p>
 <div>
     <form  (submit)="OnConnect()">
 <label for="username">Username</label>
@@ -9,4 +9,22 @@
     <input [(ngModel)]="password" name="password" type="password" required>
     <button type="submit">Connexion</button>
 </form>
-</div>
+</div> -->
+<div class="container text-center m-0 p-0">
+    <div class="row align-items-center justify-content-between">
+<img src="../../../assets/chien-embrasse-par-couple.jpg" alt="" id="photo" class="col-8">
+
+
+<form [formGroup]="connexion" (ngSubmit)="OnConnect()" class="col-4">
+  <h3>Connexion</h3>
+
+  <div class="d-flex flex-column justify-content-center mb-3">
+    <label for="FormControlInput1" class="form-label" ></label>
+    <input type="text" class="form-control shadow" id="FormControlInput1" placeholder="Votre pseudo" formControlName="username" name="username">
+
+
+  <label for="inputPassword5" class="form-label"></label>
+  <input type="password" id="inputPassword5" formControlName="password" class="form-control shadow" aria-describedby="passwordHelpBlock" placeholder="Votre mot de passe" name="password">
+
+</div><div><button type="submit" class="btn connexion" [disabled]="!connexion.valid">Se connecter</button></div>
+</form>
