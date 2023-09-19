@@ -2,15 +2,21 @@
         
         <div class="card-body">
             <div class="d-flex justify-content-evenly">
-            <img *ngIf="userPicture" class="card-img-top shadow rounded float-start" src={{userPicture.path}} alt="Card image cap">
+            <!-- <img *ngIf="userPicture" class="card-img-top shadow rounded float-start" src={{myUser.photo.path}} alt="Card image cap"> -->
+            <img class="card-img-top shadow rounded float-start" src={{myUser.photo.path}}>
             <div>
             <p class="card-text">{{myUser.username}}</p>
+            <p class="card-text">{{myUser.departement}}</p>
             <p class="card-text">{{myUser.city}}</p>
+            <p class="card-text">{{myUser.description}}</p>
         </div></div>
-        <div>
-            <p>Animal :</p>
-            <p *ngIf="userAnimal">{{userAnimal.name}}</p>
-            <p>espèce</p>
+        <div *ngFor="let animal of myUser.animal" index = i>
+            <p>Animal :  {{animal.name }}</p>
+            <!-- <p *ngIf="userAnimal">{{userAnimal.name}}</p> -->
+            <!-- <p>{{myUser.animal[0].name}}</p> -->
+           <p>espèce : {{animal.breed.species.species}}</p>
+            <p>race :  {{animal.breed.breed}}</p>
+            
             <img src="" alt="Card image cap">
         </div>
         </div>
