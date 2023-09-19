@@ -1,0 +1,16 @@
+#photo {
+    border-radius: 0 45px 45px 0;
+height: 30%;
+width: 60%;
+}
+
+.connexion {
+    background-color: #643E2B;
+    color: white;
+    border-radius: 45px;
+    border: none;
+}
+
+input {
+    border-radius: 45px;
+}
