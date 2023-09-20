@@ -9,6 +9,9 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-md-6 col-sm-12 form_group p-3 mb-5 rounded">
+
+
+
             <form [formGroup]="addUser" (ngSubmit)="onSubmit()" class="formcontainer">
                 <h1>Inscription</h1>
                 <div class="icon">
@@ -17,26 +20,37 @@
                 <div class="container">
                     <input formControlName="firstname" class="form-control shadow" id="inputFirstName"
                         placeholder="Prénom">
+
                     <input formControlName="username" class="form-control shadow" id="inputLastName"
                         placeholder="Pseudo">
+
                     <input formControlName="email" type="email" class="form-control shadow" id="inputEmail"
                         placeholder=" E-mail">
+
                     <input formControlName="password" type="password" class="form-control shadow"
                         id="exampleInputPassword1" placeholder="Mot de Passe">
+
                     <input formControlName="departement" type="text" class="form-control shadow" id="inputDepartment"
                         placeholder="Département">
+                        
                     <input formControlName="city" type="text" class="form-control shadow" id="inputCity"
                         placeholder="Ville">
 
                     <input formControlName="photo" type="text" class="form-control shadow" id="inputPhoto">
 
-                    <textarea formControlName="description" class="form-control shadow mytext" rows="3" id="inputDescription"
-                        placeholder="Déscription"></textarea>
+                    <textarea formControlName="description" class="form-control shadow mytext" rows="3"
+                        id="inputDescription" placeholder="Déscription"></textarea>
                 </div>
                 <div class="btn_signin ">
-                    <button type="submit" class="btn  shadow-lg validbtn"><strong >s'inscrire</strong></button>
+                    <button type="submit" class="btn  shadow-lg validbtn"><strong>s'inscrire</strong></button>
                 </div>
             </form>
+
+
+
+
+
+
         </div>
     </div>
 </div>
