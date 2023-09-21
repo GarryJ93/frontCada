@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
   username!: string;
   password!: string;
   connexion!: FormGroup;
- 
+
 
   constructor(
     private userService: UsersService,
@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit{
   password: ['', Validators.required],
   });
 
-  }  
+  }
 
   OnConnect() {
 
 
     if (this.connexion.valid) {
-      
+
       let username = this.connexion.value.username;
       let password = this.connexion.value.password;
   this.authService.login(username, password).subscribe({
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit{
       },
     });
     }
-  
+
   }
 }
-    
+

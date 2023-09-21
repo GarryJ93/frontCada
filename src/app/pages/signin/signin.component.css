@@ -114,13 +114,18 @@ form.formcontainer {
   width: 100%;
 }
 
-input{
+input, select{
   border-radius: 45px;
+  text-indent: 5%;
+}
 
+select {
+  height: 58px;
 }
 
 .mytext{
   border-radius: 15px;
+  text-indent: 5%;
 }
 
 .validbtn{
