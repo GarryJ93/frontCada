@@ -1,12 +1,37 @@
+
+.page {
+    /* font-size: 1.2rem; */
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+
 .contact {
     background-color: #FA5E43;
     color: white;
     border-radius: 45px; 
     border: none;
+    font-size: 1.7rem;
+    font-weight: bold;
 }
 
 .back {
     font-size: 1.70em;
     font-weight: bold;
     color: #643E2B;
+}
+
+img {
+    border-radius: 40px;
+    width: 50%;
+    height: 50%;
+}
+
+.text {
+    width: 50%;
+    height: 50%;
+}
+
+.profile {
+    width: 75%;
+    height: 50%;
 }

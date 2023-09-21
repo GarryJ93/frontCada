@@ -1,4 +1,6 @@
-
+.fullheight {
+    margin-bottom: 30px;
+}
 
 .error {
     font-size: 3rem;
@@ -11,9 +13,9 @@
 
 
 
-.img-fluid {
+/* .img-fluid {
     max-width: 100%;
     height: auto;
-}
+} */
 
 

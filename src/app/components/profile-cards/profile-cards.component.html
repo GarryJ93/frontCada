@@ -1,7 +1,13 @@
-<div class="card shadow-sm" style="width: 16rem; height: 23rem">
+<div
+  class="card shadow m-4"
+  style="width: 16rem; height: 23rem"
+  [routerLink]="[('/consultation/'), myUser.id_user]"
+  [id]="myUser.id_user"
+>
   <div class="card-body">
     <div id="top">
       <img
+        *ngIf="myUser.photo"
         class="card-img-top shadow rounded float-start"
         src="{{ myUser.photo.path }}"
       />
@@ -13,17 +19,13 @@
 
     <h3>Animal :</h3>
 
-    <div
-      
-      *ngFor="let animal of myUser.animal"
-      id="bottom"
-    >
+    <div *ngFor="let animal of myUser.animal" id="bottom">
       <div class="information-block">
         <p class="animal-name">{{ animal.name }}</p>
         <p>race : {{ animal.breed.breed }}</p>
       </div>
       <div>
-        <img
+        <img *ngIf="animal"
           class="card-img-top shadow rounded float-start"
           src="{{ animal.photo.path }}"
           alt="user's animal photo"
@@ -32,4 +34,3 @@
     </div>
   </div>
 </div>
-

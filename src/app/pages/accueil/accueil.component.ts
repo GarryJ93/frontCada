@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Animals } from 'src/app/models/animals';
 import { GenderUser } from 'src/app/models/gender-users';
 import { Photos } from 'src/app/models/photos';
@@ -10,40 +11,43 @@ import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.css']
+  styleUrls: ['./accueil.component.css'],
 })
 export class AccueilComponent {
-
   userToDisplay!: Users[];
   allUsers: Users[] = [];
   photosToDisplay!: Photos[];
   allPhotos: Photos[] = [];
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
-  
 
-  constructor(private usersService: UsersService, private photoService: PhotosService, private animalsService: AnimalsService) { }
+  constructor(
+    private usersService: UsersService,
+    private photoService: PhotosService,
+    private animalsService: AnimalsService,
+  ) { }
 
   ngOnInit() {
+
+
     this.usersService.getAllUsers().subscribe({
       next: (response) => {
         {
-        this.allUsers = [...response];
-        this.userToDisplay = [...response];
-      }
-      console.log(this.allUsers);
-    }
-      }
-    )
+          this.allUsers = [...response];
+          this.userToDisplay = [...response];
+        }
+        // console.log(this.allUsers);
+      },
+    });
     this.photoService.getAllPhotos().subscribe({
       next: (response) => {
         {
           this.allPhotos = [...response];
           this.photosToDisplay = [...response];
         }
-        console.log(this.allPhotos)
-      }
-    })
+        // console.log(this.allPhotos);
+      },
+    });
 
     this.animalsService.getAllAnimals().subscribe({
       next: (response) => {
@@ -51,12 +55,13 @@ export class AccueilComponent {
           this.allAnimals = [...response];
           this.animalsToDisplay = [...response];
         }
-        console.log(this.allAnimals);
+        // console.log(this.allAnimals);
       },
     });
+
+    
   }
-      
-  }
+}
 
  
 

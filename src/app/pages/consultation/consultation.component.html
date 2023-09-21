@@ -1,25 +1,31 @@
 <app-nav-bar></app-nav-bar>
-<div class="d-flex flex-column m-4">
-<div class="d-flex justify-content-between">
-<p [routerLink]="('/accueil')" class="back">&#x2190; Retour</p>
-<img src="" alt="">
-<div>
-<p>Pseudo</p>
-<p>Département</p>
-<p>Ville</p>
-<p>Description</p>
-</div>
-<button class="btn contact shadow">Contacter</button>
-</div>
-<div class="d-flex justify-content-evenly">
-<p>Animaux :</p>
-<img src="" alt="">
-<div>
-<p>Prénom :</p>
-<p>Espèce :</p>
-<p>Race :</p>
-<p>Âge :</p>
-<p>Sexe :</p>
-</div>
+<div class="m-auto p-4 profile">
+<div class="d-flex flex-column p-4 page card shadow ">
+  <div class="d-flex justify-content-between card-body">
+    <a  class="back" href="accueil/{{currentUser.id_user}}">&#x2190; Retour</a>
+    <button class="btn contact shadow">Contacter</button>
+  </div>
+  <div class="d-flex">
+    <img *ngIf="currentUser.photo" src="{{ currentUser.photo.path }}" alt="" width="400px" class="shadow me-5" />
+    <div class="mx-auto card-body text">
+      <p>Pseudo: {{ currentUser.username }}</p>
+      <p>Département: {{ currentUser.departement }}</p>
+      <p>Ville: {{ currentUser.city }}</p>
+      <p>Description: {{ currentUser.description }}</p>
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-evenly mt-5"
+    *ngFor="let animal of currentUser.animal"
+  >
+    <div class="card-body text">
+      <p>Prénom : {{ animal.name }}</p>
+      <p>Espèce : {{ animal.breed.breed }}</p>
+      <p>Race : {{ animal.breed.species.species }}</p>
+      <p>Âge : {{ animal.age }}</p>
+      <p>Sexe : {{ animal.sexAnimal.sex }}</p>
+    </div>
+    <img src="{{ animal.photo.path }}" alt="" width="400px" class="shadow" />
+  </div>
 </div>
 </div>

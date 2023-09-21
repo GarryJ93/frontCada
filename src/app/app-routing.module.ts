@@ -11,7 +11,8 @@ import { ConsultationComponent } from './pages/consultation/consultation.compone
 
 const routes: Routes = [
   {path: '', redirectTo: 'accueil', pathMatch: "full"},
-  {path: 'accueil', component: AccueilComponent},
+  { path: 'accueil', component: AccueilComponent },
+  { path: 'accueil/:id', component: AccueilComponent},
   {path: 'home', component: HomeComponent},
   {path: 'message', component: MessageComponent},
   {path: 'profil', component: ProfileComponent},
