@@ -1,6 +1,6 @@
 <div id="background">
 <app-nav-bar></app-nav-bar>
 
-<app-filter-bar></app-filter-bar>
+<app-filter-bar (categCheckedEvent)="categoriesReceived($event)"></app-filter-bar>
 <app-profile-list [recupUsers]="userToDisplay" ></app-profile-list>
 </div>
