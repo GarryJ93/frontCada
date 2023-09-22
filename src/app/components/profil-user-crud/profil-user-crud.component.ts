@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/models/users';
@@ -10,6 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./profil-user-crud.component.css']
 })
 export class ProfilUserCrudComponent implements OnInit {
+  @Input() RecupUserProfil!: Users[];
   formProfilUser!: FormGroup;
   profilUser!: Users;
 

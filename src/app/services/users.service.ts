@@ -39,4 +39,22 @@ export class UsersService {
       headers: headers,
     });
   }
+
+  getUserConnected(): number {
+    const userId = localStorage.getItem('user_id');
+
+    if (userId !== null) {
+      const parsedId = parseInt(userId, 10);
+
+      if (!isNaN(parsedId)) {
+        return parsedId;
+      } else {
+        console.error('Stored user_id is not a valid number:', userId);
+      }
+    } else {
+      console.error('No user_id found in local storage.');
+    }
+
+    return 0;
+  }
 }
