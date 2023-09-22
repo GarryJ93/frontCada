@@ -16,8 +16,7 @@ export class ProfileCardsComponent {
   ) { }
   ngAfterViewInit() {
     // console.log("myUser:", this.myUser);
-    // let card = document.getElementById('60');
-    // card?.scrollIntoView();
+    
     const routeParam = this.route.snapshot.paramMap;
     const IdFromRoute = routeParam.get('id');
     console.log('id: ' + IdFromRoute);

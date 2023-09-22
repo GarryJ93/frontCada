@@ -90,13 +90,15 @@ export class SigninComponent {
     let files = (event.target as HTMLInputElement).files;
     console.log(files?.item(0)?.name);
     if (files) {
-      let photo: Photos = { id_photo: 1, name: 'test', path: 'test' };
-      photo.name = files?.item(0)?.name;
-      photo.path = files?.item(0)?.webkitRelativePath;
+      let photo: Photos = {
+        name : files?.item(0)?.name, 
+        path : files?.item(0)?.webkitRelativePath
+      };
+      
       console.log(photo);
       this.photoService.addPhotos(photo).subscribe({
         next: (response) => {
-          this.id_file = response.id_photo;
+          this.id_file = response.id_photo!;
           console.log(response);
         },
       });
