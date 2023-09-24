@@ -24,7 +24,7 @@ export class ProfileCardsComponent {
   ) {}
 
   ngOnInit() {
-    this.animalsService.getAnimalByUserId().subscribe((userAnimal) => {
+    this.animalsService.getAnimalByUserId(this.userAnimal.id_animals).subscribe((userAnimal) => {
       this.userAnimal = userAnimal;
       console.log(this.userAnimal);
     });
