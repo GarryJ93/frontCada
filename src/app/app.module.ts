@@ -23,6 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
 import { AnimalCardComponent } from './components/animal-card/animal-card.component';
+import { ProfilAnimalCrudComponent } from './components/profil-animal-crud/profil-animal-crud.component';
+import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-user-crud.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { AnimalCardComponent } from './components/animal-card/animal-card.compon
     ProfileListComponent,
     ConsultationComponent,
     AnimalCardComponent,
+    ProfilAnimalCrudComponent,
+    ProfilUserCrudComponent,
   ],
 
   imports: [
