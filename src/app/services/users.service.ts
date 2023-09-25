@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Users } from '../models/users';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +19,40 @@ export class UsersService {
     return this.http.get<Users>(`http://localhost:3000/api/users/${id}`);
   }
 
+  login(username: string, password: string) {
+    return this.http
+      .post<{ access_token: string; user_id: string }>(
+        'http://localhost:3000/api/auth/login',
+        { username, password }
+      )
+      .pipe(
+        tap((response) => {
+          console.log('mon log ', response);
+          console.log(
+            'REGARDE CA POUR VOIR COMMENT TU RECOIS ID DE LA PERS CONNECTER',
+            response.user_id
+          );
+
+          localStorage.setItem('access_token', response.access_token);
+
+          if (response.user_id && Number.isFinite(response.user_id)) {
+            localStorage.setItem('user_id', response.user_id);
+
+            console.log(
+              'Id utilisateur stocké:',
+              localStorage.getItem('user_id')
+            );
+            console.log('coucou', typeof response.user_id);
+          }
+        })
+      );
+  }
+
   addUser(user: Users): Observable<Users> {
-    return this.http.post<Users>('http://localhost:3000/api/auth/register', user);
+    return this.http.post<Users>(
+      'http://localhost:3000/api/auth/register',
+      user
+    );
   }
 
   modifyUsers(id: number, updateData: Users): Observable<Users> {
