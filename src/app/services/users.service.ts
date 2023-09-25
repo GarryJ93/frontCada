@@ -57,9 +57,11 @@ export class UsersService {
 
   modifyUsers(id: number, updateData: Users): Observable<Users> {
     // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
+    console.log("mon teste", updateData);
     return this.http.patch<Users>(
       `http://localhost:3000/api/users/${id}`,
       updateData
+      
     );
   }
 

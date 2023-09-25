@@ -1,28 +1,29 @@
-<h3>Animal</h3>
+<h3>Profil Utilisateur</h3>
 <div class="top d-flex justify-content-between">
-    <img src="" alt="image de l'animal">
+    <img src="" alt="{{RecupUserProfil.id_photo}}">
 
     <div class="right">
-        <div *ngIf="!isEditing && user">{{RecupUserProfil.username}}</div>
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.username}}</div>
         <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.username" placeholder="nom de l'user">
 
-        <div *ngIf="!isEditing && user">{{RecupUserProfil.firstname}}</div>
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.firstname}}</div>
         <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.firstname" placeholder="âge de l'user">
 
-        <div *ngIf="!isEditing && user">{{RecupUserProfil.email}}</div>
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.email}}</div>
         <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.email" placeholder="race de l'user">
 
-        <div *ngIf="!isEditing && user">{{RecupUserProfil.city}}</div>
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.city}}</div>
         <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.city" placeholder="espèce de l'user">
+
         <button>Ajouter</button>
-        <!-- <button (click)="toggleEdit()">{{isEditing ? 'Sauvegarder' : 'Modifier'}}</button> -->
+        <button (click)="toggleEdit()">{{isEditing ? 'Sauvegarder' : 'Modifier'}}</button>
         <button>Supprimer</button>
 
     </div>
 </div>
 
 
-<!-- <app-profil-animal-crud></app-profil-animal-crud> -->
+<app-profil-animal-crud></app-profil-animal-crud>
 
 
 

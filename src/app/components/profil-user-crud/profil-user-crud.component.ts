@@ -1,11 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { Users } from 'src/app/models/users';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -14,55 +7,21 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './profil-user-crud.component.html',
   styleUrls: ['./profil-user-crud.component.css'],
 })
-export class ProfilUserCrudComponent implements OnInit {
+export class ProfilUserCrudComponent {
   @Input() RecupUserProfil!: Users;
 
-  formProfilUser!: FormGroup;
-  profilUser!: Users;
   isEditing = false;
-  user!: Users;
 
-  constructor(
-    private userService: UsersService,
-    private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    // setTimeout( () => { console.log('mon log chelou' , this.RecupUserProfil);}, 1000);
-    //   this.formProfilUser = this.formBuilder.group({
-    //   firstname: new FormControl('', Validators.required),
-    //   username: new FormControl('', Validators.required),
-    //   email: new FormControl('', [Validators.required, Validators.email]),
-    //   password: new FormControl('', Validators.required),
-    //   departement: new FormControl('', Validators.required),
-    //   city: new FormControl('', Validators.required),
-    //   description: new FormControl('', Validators.required),
-    // });
-  }
+  constructor(private userService: UsersService) {}
 
   toggleEdit() {
     this.isEditing = !this.isEditing;
-  }
+    console.log(this.RecupUserProfil.id_user);
 
-
-  
-  onSubmit() {
-    let profilUser: Users = { ...this.formProfilUser.value };
-    if (!this.formProfilUser.valid) {
-      console.log("Le formulaire n'est pas valide");
-      return;
+    if (!this.isEditing) {
+      this.userService
+        .modifyUsers(this.RecupUserProfil.id_user, this.RecupUserProfil)
+        .subscribe({});
     }
-    profilUser.id_gender_user = 2; // À adapter en fonction de votre logique
-    this.userService.addUser(profilUser).subscribe({
-      next: () => {
-        alert('Utilisateur ajouté avec succès !');
-        this.formProfilUser.reset();
-        this.router.navigate(['/login']);
-      },
-      error: (error) => {
-        console.error("Erreur lors de l'ajout de l'utilisateur", error);
-      },
-    });
   }
 }
