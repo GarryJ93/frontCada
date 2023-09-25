@@ -24,6 +24,8 @@ export class SigninComponent {
   newUser!: Users;
   id_file!: number;
   genders!: GenderUser[];
+  imageToShow: any;
+  myFile!: File;
 
   constructor(
     private userService: UsersService,
@@ -85,23 +87,42 @@ export class SigninComponent {
     console.log(newUser);
   }
 
-  onChange(event: Event) {
-    console.log((event.target as HTMLInputElement).files);
-    let files = (event.target as HTMLInputElement).files;
-    console.log(files?.item(0)?.name);
-    if (files) {
-      let photo: Photos = {
-        name : files?.item(0)?.name, 
-        path : files?.item(0)?.webkitRelativePath
-      };
+  // async createImageFromBlob(image: Blob) {
+  //   let reader = await new FileReader();
+  //   reader.readAsDataURL(image);
+  //   reader.addEventListener('load', () => {
+  //     this.imageToShow = reader.result;
+  //   })
+  // }
+  onChange(e: any) {
+    // console.log((event.target as HTMLInputElement).files);
+    // let files = (event.target as HTMLInputElement).files;
+    // console.log(files?.item(0)?.name);
+    // if (files) {
+    //   let photo: Photos = {
+    //     name : files?.item(0)?.name, 
+    //     path : files?.item(0)?.webkitRelativePath
+    //   };
       
-      console.log(photo);
-      this.photoService.addPhotos(photo).subscribe({
-        next: (response) => {
-          this.id_file = response.id_photo!;
-          console.log(response);
-        },
+    //   console.log(photo);
+    //   this.photoService.addPhotos(photo).subscribe({
+    //     next: (response) => {
+    //       this.id_file = response.id_photo!;
+    //       console.log(response);
+    //     },
+    //   });
+    // }
+    console.log(e.target.files);
+    this.myFile = e.target.files[0];
+    if (this.myFile) {
+      const formData = new FormData();
+      formData.append('monFichier', this.myFile);
+      
+      this.photoService.postImage(formData).subscribe((photo: Partial<Photos>) => {
+        this.id_file = photo.id_photo!
+        alert('image postée');
       });
     }
   }
 }
+

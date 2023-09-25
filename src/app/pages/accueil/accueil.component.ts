@@ -20,16 +20,16 @@ export class AccueilComponent {
   allPhotos: Photos[] = [];
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
+  isImageLoading!: Boolean;
+  imageToShow!: any;
 
   constructor(
     private usersService: UsersService,
     private photoService: PhotosService,
-    private animalsService: AnimalsService,
+    private animalsService: AnimalsService
   ) { }
 
   ngOnInit() {
-
-
     this.usersService.getAllUsers().subscribe({
       next: (response) => {
         {
@@ -39,15 +39,9 @@ export class AccueilComponent {
         // console.log(this.allUsers);
       },
     });
-    this.photoService.getAllPhotos().subscribe({
-      next: (response) => {
-        {
-          this.allPhotos = [...response];
-          this.photosToDisplay = [...response];
-        }
-        // console.log(this.allPhotos);
-      },
-    });
+    
+    this.getImageFromService();
+
 
     this.animalsService.getAllAnimals().subscribe({
       next: (response) => {
@@ -58,11 +52,29 @@ export class AccueilComponent {
         // console.log(this.allAnimals);
       },
     });
-
-    
   }
-}
+
+  async createImageFromBlob(image: Blob) {
+    let reader = await new FileReader();
+    reader.readAsDataURL(image);
+    reader.addEventListener('load', () => {
+      this.imageToShow = reader.result;
+    })
+  }
+  getImageFromService() {
+    this.isImageLoading = true;
+    this.photoService.getImage().subscribe({
+      next: (data: Blob) => {
+        this.createImageFromBlob(data);
+        this.isImageLoading = false;
+      },
+      error: (error) => {
+        this.isImageLoading = false;
+        console.log(error);
+      },
+    });
+  }
 
  
 
-
+}

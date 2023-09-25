@@ -9,4 +9,5 @@ import { Users } from 'src/app/models/users';
 })
 export class ProfileListComponent {
   @Input() recupUsers!: Users[];
+  @Input() imageList!: Photos[];
 }

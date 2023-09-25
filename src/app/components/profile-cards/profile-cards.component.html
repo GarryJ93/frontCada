@@ -9,8 +9,9 @@
       <img
         *ngIf="myUser.photo"
         class="card-img-top shadow rounded float-start"
-        src="{{ myUser.photo.path }}"
+        src="{{userImage}}"
       />
+      
       <div class="information-block">
         <p class="card-text user-name">{{ myUser.username }}</p>
         <p class="card-text">{{ myUser.city }}</p>
@@ -27,7 +28,7 @@
       <div>
         <img *ngIf="animal"
           class="card-img-top shadow rounded float-start"
-          src="{{ animal.photo.path }}"
+          src=""
           alt="user's animal photo"
         />
       </div>

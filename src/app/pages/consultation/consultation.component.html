@@ -2,11 +2,11 @@
 <div class="m-auto p-4 profile">
 <div class="d-flex flex-column p-4 page card shadow ">
   <div class="d-flex justify-content-between card-body">
-    <a  class="back" href="accueil/{{currentUser.id_user}}">&#x2190; Retour</a>
+    <a  class="back" routerLink="/accueil/{{currentUser.id_user}}">&#x2190; Retour</a>
     <button class="btn contact shadow">Contacter</button>
   </div>
   <div class="d-flex">
-    <img *ngIf="currentUser.photo" src="{{ currentUser.photo.path }}" alt="" width="400px" class="shadow me-5" />
+    <img *ngIf="currentUser.photo" src="{{ currentUser.photo }}" alt="" width="400px" class="shadow me-5" />
     <div class="mx-auto card-body text">
       <p>Pseudo: {{ currentUser.username }}</p>
       <p>Département: {{ currentUser.departement }}</p>
@@ -25,7 +25,7 @@
       <p>Âge : {{ animal.age }}</p>
       <p>Sexe : {{ animal.sexAnimal.sex }}</p>
     </div>
-    <img src="{{ animal.photo.path }}" alt="" width="400px" class="shadow" />
+    <img src="{{ animal.photo}}" alt="" width="400px" class="shadow" />
   </div>
 </div>
 </div>
