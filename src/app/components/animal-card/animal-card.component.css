@@ -1,0 +1,27 @@
+.information-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.animal-name {
+  font-size: larger;
+}
+
+#bottom{
+display: flex;
+justify-content: space-between;
+}
+
+
+.animalImage{
+  position: relative;
+  display: flex;
+}
+
+.active {
+  background-color: rgb(103, 103, 146); /* Style de l'indicateur pour la carte active */
+}
+
+
+

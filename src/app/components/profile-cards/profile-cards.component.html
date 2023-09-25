@@ -10,26 +10,9 @@
         <p class="card-text">{{ myUser.city }}</p>
       </div>
     </div>
+  </div>
 
     <h3>Animal :</h3>
-
-    <div
-      
-      *ngFor="let animal of myUser.animal"
-      id="bottom"
-    >
-      <div class="information-block">
-        <p class="animal-name">{{ animal.name }}</p>
-        <p>race : {{ animal.breed.breed }}</p>
-      </div>
-      <div>
-        <img
-          class="card-img-top shadow rounded float-start"
-          src="{{ animal.photo.path }}"
-          alt="user's animal photo"
-        />
-      </div>
-    </div>
-  </div>
-</div>
+<app-animal-card  [myUser]="myUser"></app-animal-card>
+ </div> 
 

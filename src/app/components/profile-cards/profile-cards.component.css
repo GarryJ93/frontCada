@@ -20,17 +20,10 @@ display: flex;
 justify-content: space-between;
 }
 
-#bottom{
-display: flex;
-justify-content: space-between;
-}
+
 
 .user-name {
   font-size: x-large;
-}
-
-.animal-name {
-  font-size: larger;
 }
 
 
