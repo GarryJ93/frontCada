@@ -15,7 +15,9 @@ export class ProfileCardsComponent {
   @Input() image!: Photos[];
   card!: HTMLElement | null;
   currentImage!: Blob;
+  animalCurrentImage!: Blob;
   userImage!: any;
+  animalImage!: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,25 +26,47 @@ export class ProfileCardsComponent {
 
   ngOnInit() {
     const myUserIdPhoto = this.myUser.id_photo;
-    console.log(myUserIdPhoto);
-    if (myUserIdPhoto) {
       this.photoService.getImageById(myUserIdPhoto).subscribe({
         next: (data: Blob) => {
           this.currentImage = data;
           this.createImageFromBlob(this.currentImage);
-        }
+        },
       });
-      console.log(this.currentImage);
-      
-    }
+    
+    if (this.myUser.animal) {
+    for (let animal of this.myUser.animal) {
+      const animalIdPhoto = animal.id_photo;
+      console.log('id animal: ', animalIdPhoto);
+      this.photoService.getImageById(animalIdPhoto).subscribe({
+        next: (data: Blob) => {
+          this.animalCurrentImage = data;
+          this.createAnimalImageFromBlob(
+            this.animalCurrentImage,
+            animal.id_animals
+          );
+        },
+      });
+    }}
   }
 
-  async createImageFromBlob(image: Blob) {
-    let reader = await new FileReader();
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
     reader.readAsDataURL(image);
     reader.addEventListener('load', () => {
       this.userImage = reader.result;
-      console.log(this.userImage);
+    });
+  }
+
+  createAnimalImageFromBlob(image: Blob, idAnimal: number) {
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    const currentAnimal = this.myUser.animal.find(
+      (x) => x.id_animals === idAnimal
+    );
+
+    reader.addEventListener('load', () => {
+      if (currentAnimal) currentAnimal.picture = reader.result;
+      console.log(this.animalImage);
     });
   }
   ngAfterViewInit() {
@@ -50,10 +74,10 @@ export class ProfileCardsComponent {
 
     const routeParam = this.route.snapshot.paramMap;
     const IdFromRoute = routeParam.get('id');
-    
+
     if (IdFromRoute) {
       console.log('id: ' + IdFromRoute);
-    console.log(typeof IdFromRoute);
+      console.log(typeof IdFromRoute);
       this.card = document.getElementById(IdFromRoute);
       console.log(this.card);
       console.log(this.myUser.id_photo);

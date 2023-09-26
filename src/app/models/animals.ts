@@ -13,4 +13,6 @@ export interface Animals {
   breed: Breed;
   photo: Photos;
   sexAnimal: SexAnimals;
+  // propriété utilisée que sur le front
+  picture: any;
 }

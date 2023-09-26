@@ -26,9 +26,9 @@
         <p>race : {{ animal.breed.breed }}</p>
       </div>
       <div>
-        <img *ngIf="animal"
+        <img *ngIf="myUser.animal"
           class="card-img-top shadow rounded float-start"
-          src=""
+          src="{{animal.picture}}"
           alt="user's animal photo"
         />
       </div>
