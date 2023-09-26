@@ -1,19 +1,23 @@
-<!-- <h3>Profil animal</h3>
+
+
+
+<h3>Mes animaux</h3>
 <div class="top d-flex justify-content-between">
-    <img src="" alt="{{RecupUserProfil.id_photo}}">
+    
+    <div *ngFor=" let myAnimal of RecupUserProfil.animal" class="right" >
+        <img src="{{myAnimal.photo.path}}" alt="" width="200px">
+        <div *ngIf="!isEditing && RecupUserProfil">{{myAnimal.name}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="myAnimal.name" placeholder="nom de l'user">
 
-    <div class="right">
-        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.username}}</div>
-        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.username" placeholder="nom de l'user">
+        <div *ngIf="!isEditing && RecupUserProfil">{{myAnimal.breed.breed}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="myAnimal.breed.breed" placeholder="âge de l'user">
 
-        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.firstname}}</div>
-        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.firstname" placeholder="âge de l'user">
+        <div *ngIf="!isEditing && myAnimal">{{myAnimal.breed.species.species}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="myAnimal.breed.species.species" placeholder="race de l'user">
 
-        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.email}}</div>
-        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.email" placeholder="race de l'user">
-
-        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.city}}</div>
-        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.city" placeholder="espèce de l'user">
+        <div *ngIf="!isEditing && myAnimal">{{myAnimal.age}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="myAnimal.age" placeholder="espèce de l'user">
+        
 
         <button>Ajouter</button>
         <button (click)="toggleEdit()">{{isEditing ? 'Sauvegarder' : 'Modifier'}}</button>
@@ -21,8 +25,6 @@
 
     </div>
 </div>
- -->
-
 
 
 

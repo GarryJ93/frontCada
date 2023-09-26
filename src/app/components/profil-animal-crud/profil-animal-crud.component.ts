@@ -7,7 +7,9 @@ import {
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { Animals } from 'src/app/models/animals';
+import { Users } from 'src/app/models/users';
 import { AnimalsService } from 'src/app/services/animals.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-profil-animal-crud',
@@ -15,16 +17,25 @@ import { AnimalsService } from 'src/app/services/animals.service';
   styleUrls: ['./profil-animal-crud.component.css'],
 })
 export class ProfilAnimalCrudComponent {
-  @Input()
-  formProfilanimal!: FormGroup;
-  profilAnimal!: Animals;
+  @Input() RecupUserProfil!: Users;
+  isEditing = false;
 
   constructor(
-    private animalsService: AnimalsService,
-    private formBulder: FormBuilder,
-    private router: Router
+    private userService: UsersService,
+    private animalsService: AnimalsService
   ) {}
 
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
+    console.log('log RecupUserProfil ', this.RecupUserProfil.animal);
+    console.log( 'mon animal ',);
+
+    if (!this.isEditing) {
+      this.userService
+        .modifyUsers(this.RecupUserProfil.id_user, this.RecupUserProfil)
+        .subscribe({});
+    }
+  }
 
 
 
