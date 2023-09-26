@@ -7,7 +7,9 @@ import {
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { Animals } from 'src/app/models/animals';
+import { Users } from 'src/app/models/users';
 import { AnimalsService } from 'src/app/services/animals.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-profil-animal-crud',

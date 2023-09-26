@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from 'src/app/models/users';
+import { AnimalsService } from 'src/app/services/animals.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  
   userConnect!: Users;
-  constructor(private userService: UsersService) {}
+  constructor(
+    private userService: UsersService,
+    private animalSaervce: AnimalsService
+  ) {}
   currentUser = this.userService.getUserConnected()!;
-
 
   ngOnInit(): void {
     this.userService.getUserById(this.currentUser).subscribe({
