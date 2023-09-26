@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { GenderUser } from 'src/app/models/gender-users';
 
 @Component({
   selector: 'app-filter-bar',
@@ -6,11 +7,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./filter-bar.component.css'],
 })
 export class FilterBarComponent {
-  categoriesChecked: string[] = [];
+  @Input() userDpt!: Number[];
+  @Input() genderUser!: GenderUser[];
+
   @Output() categCheckedEvent = new EventEmitter<string[]>();
+
+  categoriesChecked: string[] = [];
 
   onCheckCategory(e: Event) {
     const target = e.target as HTMLInputElement;
+    console.log("gender",this.genderUser);
 
     if (target.checked) {
       this.categoriesChecked.push(target.value);

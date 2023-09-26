@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { response } from 'express';
 import { Animals } from 'src/app/models/animals';
+import { GenderUser } from 'src/app/models/gender-users';
 import { Photos } from 'src/app/models/photos';
 import { Users } from 'src/app/models/users';
 import { AnimalsService } from 'src/app/services/animals.service';
+import { GenderUserService } from 'src/app/services/gender-users.service';
 import { PhotosService } from 'src/app/services/photos.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -19,11 +22,14 @@ export class AccueilComponent {
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
   categoriesFiltered: string[] = [];
+  userDepartement!: Number[];
+  genderUsers!: GenderUser[];
 
   constructor(
     private usersService: UsersService,
     private photoService: PhotosService,
-    private animalsService: AnimalsService
+    private animalsService: AnimalsService,
+    private genderService: GenderUserService
   ) {}
 
   ngOnInit() {
@@ -32,6 +38,7 @@ export class AccueilComponent {
         {
           this.allUsers = [...response];
           this.userToDisplay = [...response];
+          this.userDepartement = [...new Set(this.userToDisplay.map((user)=>user.departement))]
         }
       },
     });
@@ -52,6 +59,12 @@ export class AccueilComponent {
         }
       },
     });
+
+    this.genderService.getGenderUsers().subscribe({
+      next:(response)=>{
+        this.genderUsers = [...response]
+      }
+    })
   }
 
   categoriesReceived(categoriesSelected: string[]) {
