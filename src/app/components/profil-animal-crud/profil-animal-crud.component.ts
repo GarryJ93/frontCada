@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -14,62 +14,42 @@ import { AnimalsService } from 'src/app/services/animals.service';
   templateUrl: './profil-animal-crud.component.html',
   styleUrls: ['./profil-animal-crud.component.css'],
 })
-export class ProfilAnimalCrudComponent {
-  @Input()
-  formProfilanimal!: FormGroup;
-  profilAnimal!: Animals;
+export class ProfilAnimalCrudComponent implements OnChanges {
+  @Input() animalsProfil!: Animals[];
+  isEditing = false;
+  currentAnimalIndex = 0;
+  numberOfAnimals!: number;
 
-  constructor(
-    private animalsService: AnimalsService,
-    private formBulder: FormBuilder,
-    private router: Router
-  ) {}
+  constructor(private animalsService: AnimalsService) {}
 
+  toggleEdit(i: number) {
+    this.isEditing = !this.isEditing;
+    console.log(this.animalsProfil[i].id_animals);
 
+    if (!this.isEditing) {
+      this.animalsService
+        .modifyAnimals(this.animalsProfil[i].id_animals, this.animalsProfil[i])
+        .subscribe({});
+    }
+  }
 
+  previousAnimal() {
+    this.currentAnimalIndex =
+      (this.currentAnimalIndex - 1 + this.numberOfAnimals) %
+      this.numberOfAnimals;
+  }
 
+  // Méthode pour afficher la carte suivante
+  nextAnimal() {
+    this.currentAnimalIndex =
+      (this.currentAnimalIndex + 1) % this.numberOfAnimals;
+    console.log('ca tourne1', this.currentAnimalIndex);
+    console.log('ca tourne2', this.numberOfAnimals);
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  ngOnChanges() {
+    this.numberOfAnimals = this.animalsProfil.length;
+  }
 
   // ngOnInit(): void {
   //   this.formProfilanimal = this.formBulder.group({

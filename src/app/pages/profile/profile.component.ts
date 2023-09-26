@@ -17,20 +17,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserById(this.currentUser).subscribe({
       next: (response) => {
-        
-        
-
-
         this.userConnect = response;
-        console.log('tableau ou pas ??', this.userConnect);
-        
+        console.log('tableau ou pas ??', this.userConnect);        
       },
       error: (error) => {
         console.error('Erreur lors de la récuperation des données', error);
       },
     }
     );
-  }
-
-  
+  }  
   }
