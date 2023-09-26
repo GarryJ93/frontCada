@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Animals } from 'src/app/models/animals';
 import { Users } from 'src/app/models/users';
 import { AnimalsService } from 'src/app/services/animals.service';
@@ -9,16 +9,20 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './profil-user-crud.component.html',
   styleUrls: ['./profil-user-crud.component.css'],
 })
-export class ProfilUserCrudComponent {
+export class ProfilUserCrudComponent implements OnChanges{
   @Input() RecupUserProfil!: Users;
 
+  animalsUserProfil!: Animals[]
   isEditing = false;
   // myAnimal!:Animals[];
 
-  constructor(
-    private userService: UsersService,
-    private animalsService: AnimalsService
-  ) {}
+  constructor(private userService: UsersService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+   
+    this.animalsUserProfil = this.RecupUserProfil.animal;
+    console.log('ds parent1', this.RecupUserProfil);
+    console.log('ds parent2', this.animalsUserProfil);
+  }
 
   toggleEdit() {
     this.isEditing = !this.isEditing;

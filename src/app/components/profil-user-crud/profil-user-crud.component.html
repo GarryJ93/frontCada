@@ -1,6 +1,6 @@
 <h3>Profil Utilisateur</h3>
 <div class="top d-flex justify-content-between">
-    <img src="{{RecupUserProfil.photo.path}}" alt="" width="200px">
+    <!-- <img src="" alt="{{RecupUserProfil.id_photo}}"> -->
 
     <div class="right">
         <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.username}}</div>
@@ -23,6 +23,7 @@
 </div>
 
 
+<app-profil-animal-crud [animalsProfil]="animalsUserProfil"></app-profil-animal-crud>
 
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,71 +16,42 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './profil-animal-crud.component.html',
   styleUrls: ['./profil-animal-crud.component.css'],
 })
-export class ProfilAnimalCrudComponent {
-  @Input() RecupUserProfil!: Users;
+export class ProfilAnimalCrudComponent implements OnChanges {
+  @Input() animalsProfil!: Animals[];
   isEditing = false;
+  currentAnimalIndex = 0;
+  numberOfAnimals!: number;
 
-  constructor(
-    private userService: UsersService,
-    private animalsService: AnimalsService
-  ) {}
+  constructor(private animalsService: AnimalsService) {}
 
-  toggleEdit() {
+  toggleEdit(i: number) {
     this.isEditing = !this.isEditing;
-    console.log('log RecupUserProfil ', this.RecupUserProfil.animal);
-    console.log( 'mon animal ',);
+    console.log(this.animalsProfil[i].id_animals);
 
     if (!this.isEditing) {
-      this.userService
-        .modifyUsers(this.RecupUserProfil.id_user, this.RecupUserProfil)
+      this.animalsService
+        .modifyAnimals(this.animalsProfil[i].id_animals, this.animalsProfil[i])
         .subscribe({});
     }
   }
 
+  previousAnimal() {
+    this.currentAnimalIndex =
+      (this.currentAnimalIndex - 1 + this.numberOfAnimals) %
+      this.numberOfAnimals;
+  }
 
+  // Méthode pour afficher la carte suivante
+  nextAnimal() {
+    this.currentAnimalIndex =
+      (this.currentAnimalIndex + 1) % this.numberOfAnimals;
+    console.log('ca tourne1', this.currentAnimalIndex);
+    console.log('ca tourne2', this.numberOfAnimals);
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  ngOnChanges() {
+    this.numberOfAnimals = this.animalsProfil.length;
+  }
 
   // ngOnInit(): void {
   //   this.formProfilanimal = this.formBulder.group({
