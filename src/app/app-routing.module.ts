@@ -8,6 +8,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MessageComponent } from './pages/message/message.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { AddNewAnimalComponent } from './pages/add-new-animal/add-new-animal.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: "full"},
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'login', component: LoginComponent },
   {path: 'consultation/:id', component: ConsultationComponent},
-  {path: '**', component: Page404Component}];
+  {path: 'addNewAnimal', component: AddNewAnimalComponent},
+  {path: '**', component: Page404Component}
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

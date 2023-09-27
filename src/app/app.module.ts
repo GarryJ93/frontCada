@@ -26,6 +26,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AnimalCardComponent } from './components/animal-card/animal-card.component';
 import { ProfilAnimalCrudComponent } from './components/profil-animal-crud/profil-animal-crud.component';
 import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-user-crud.component';
+import { AddNewAnimalComponent } from './pages/add-new-animal/add-new-animal.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-us
     AnimalCardComponent,
     ProfilAnimalCrudComponent,
     ProfilUserCrudComponent,
+    AddNewAnimalComponent,
   ],
 
   imports: [
