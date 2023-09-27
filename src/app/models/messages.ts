@@ -1,7 +1,7 @@
 import { Users } from "./users";
 
 export interface Messages {
-    id: number;
+    id_message: number;
     username: string;
     sender: Users;
     receiver: Users;

@@ -32,11 +32,22 @@ export class MessagesService {
   getUserChats(senderId: number, receiverId: number): Observable<Messages[]> {
     const headers = this.getHeaders();
     return this.http.get<Messages[]>(`${this.BASE_URL}/messages/conversation/${senderId}/${receiverId}`, { headers }).pipe(
-      tap((messages: Messages[]) => {
-        this.lastMessageId = messages[messages.length - 1].id
-        console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', this.lastMessageId);
+      // tap((messages: Messages[]) => {
+    
+      //   this.lastMessageId = messages[messages.length - 1].id
+      //   console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', this.lastMessageId);
 
+      // })
+      tap((messages: Messages[]) => {
+        console.log('Message recu de api : ', messages)
+        if (messages.length > 0) {
+          this.lastMessageId = messages[messages.length - 1].id_message;
+          console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', this.lastMessageId);
+        } else {
+          console.log('Pas de messages reçus');
+        }
       })
+
     );
   }
 }

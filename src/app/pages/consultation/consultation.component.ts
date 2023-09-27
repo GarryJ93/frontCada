@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Location } from '@angular/common';
 import { PhotosService } from 'src/app/services/photos.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChatModalComponent } from 'src/app/components/chat-modal/chat-modal.component';
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
@@ -93,7 +94,8 @@ export class ConsultationComponent {
   // }
 
   openChatModal(){
-    this.showChatModal = true;
+    const modalRef = this.modalService.open(ChatModalComponent, { centered: true, size: 'lg' });
+    modalRef.componentInstance.selectedUser = this.currentUser;
   }
 
 }

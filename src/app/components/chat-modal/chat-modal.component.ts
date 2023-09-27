@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Messages } from 'src/app/models/messages';
 import { Users } from 'src/app/models/users';
 import { MessagesService } from 'src/app/services/messages.service';
@@ -11,7 +12,7 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   templateUrl: './chat-modal.component.html',
   styleUrls: ['./chat-modal.component.css']
 })
-export class ChatModalComponent {
+export class ChatModalComponent implements OnInit {
 
 
   messages: Messages[] = [];
@@ -29,6 +30,7 @@ export class ChatModalComponent {
     private userService: UsersService,
     private messageService: MessagesService,
     private ws: WebSocketService,
+    private modalService: NgbModal,
 
   ) {
     this.messageForm = this.fb.group({
@@ -63,20 +65,25 @@ export class ChatModalComponent {
     console.log('listen to websocket');
 
     this.ws.listen('msgToClient').subscribe((data: any) => {
-      console.log("Data recu :", data);
+      console.log("Data recu du serveur:", data);
 
-      if (typeof data === 'object' && 'id_user_send' in data && 'id_user_received' in data && 'message' in data && 'date' in data) {
+      if (typeof data === 'object' && 'sender' in data && 'receiver' in data && 'message' in data && 'date' in data) {
         const newMessage: Messages = {
-          id: 0,
+          id_message: 0,
           username: data.username,
-          sender: data.sender_id,
-          receiver: data.receiver_id,
-          message: data.content,
-          date: new Date(data.timestamp),
+          sender: data.sender,
+          receiver: data.receiver,
+          message: data.message,
+          date: new Date(data.date),
         };
 
         this.messages.push(newMessage);
+
+       
+       
       }
+      console.log('Tableau message actuel', this.messages)
+  
     });
 
 
@@ -94,14 +101,17 @@ export class ChatModalComponent {
 
 
       if (newMessage) {
-        this.messageService.sendMessage(newMessage, this.currentUser.id, receiverId).subscribe(data => {
+        this.messageService.sendMessage(newMessage, this.currentUser.id, +this.receiverUser).subscribe(data => {
           this.messageForm.reset();
         });
+        this.ws.emit('msgToServer', newMessage);
       }
     }
   }
 
-
+  closeModal() {
+    this.modalService.dismissAll();
+  }
 
 
 }
