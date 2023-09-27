@@ -112,6 +112,7 @@ export class SigninComponent {
     //     },
     //   });
     // }
+    
     console.log(e.target.files);
     this.myFile = e.target.files[0];
     if (this.myFile) {
@@ -120,6 +121,7 @@ export class SigninComponent {
       
       this.photoService.postImage(formData).subscribe((photo: Partial<Photos>) => {
         this.id_file = photo.id_photo!
+        
         alert('image postée');
       });
     }

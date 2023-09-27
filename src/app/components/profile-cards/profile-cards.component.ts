@@ -65,8 +65,9 @@ export class ProfileCardsComponent {
     );
 
     reader.addEventListener('load', () => {
-      if (currentAnimal) currentAnimal.picture = reader.result;
-      console.log(this.animalImage);
+      if (currentAnimal)
+        currentAnimal.picture = reader.result;
+      
     });
   }
   ngAfterViewInit() {

@@ -42,7 +42,6 @@ export class ConsultationComponent {
       if (this.currentUser.animal) {
         for (let animal of this.currentUser.animal) {
           const animalIdPhoto = animal.id_photo;
-          console.log('id animal: ', animalIdPhoto);
           this.photoService.getImageById(animalIdPhoto).subscribe({
             next: (data: Blob) => {
               this.animalCurrentImage = data;
@@ -69,7 +68,6 @@ export class ConsultationComponent {
     
     reader.addEventListener('load', () => {
       if(currentAnimal) currentAnimal.picture = reader.result;
-      console.log(this.animalImage);
     });
   }
 }

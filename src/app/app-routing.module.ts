@@ -10,14 +10,14 @@ import { MessageComponent } from './pages/message/message.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'accueil', pathMatch: "full"},
-  { path: 'accueil', component: AccueilComponent },
-  { path: 'accueil/:id', component: AccueilComponent},
+  {path: '', redirectTo: 'home', pathMatch: "full"},
+  {path: 'accueil', component: AccueilComponent },
+  {path: 'accueil/:id', component: AccueilComponent},
   {path: 'home', component: HomeComponent},
   {path: 'message', component: MessageComponent},
   {path: 'profil', component: ProfileComponent},
   {path: 'signin', component: SigninComponent},
-  { path: 'login', component: LoginComponent },
+  {path: 'login', component: LoginComponent },
   {path: 'consultation/:id', component: ConsultationComponent},
   {path: '**', component: Page404Component}];
 

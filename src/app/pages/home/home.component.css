@@ -1,5 +1,5 @@
 .accueil {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .center-pic {
@@ -17,4 +17,20 @@ width: 100%;
     border-radius: 45px 0 0 45px;
     height: 10%;
     width: 40%;
+ }
+
+ h1 {
+    color: #643E2B;
+    font-size: 2.5rem;
+    font-weight: bold;
+ }
+
+ p{
+    color: #643E2B;
+    font-size: 1.2rem;
+ }
+
+ .texte{
+    max-width: 75%;
+    text-align: center;
  }
