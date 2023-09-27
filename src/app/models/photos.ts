@@ -1,5 +1,7 @@
 export interface Photos {
-  id_photo: number;
-  name: string | undefined;
-  path: string | undefined;
+  id_photo?: number;
+  name: string;
+  mimetype: string;
+  size: number;
+  description: string;
 }

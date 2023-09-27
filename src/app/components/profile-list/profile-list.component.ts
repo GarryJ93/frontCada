@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Photos } from 'src/app/models/photos';
 import { Users } from 'src/app/models/users';
 
 @Component({
@@ -9,4 +8,5 @@ import { Users } from 'src/app/models/users';
 })
 export class ProfileListComponent {
   @Input() recupUsers!: Users[];
+  
 }

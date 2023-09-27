@@ -1,0 +1,45 @@
+<div class="carousel">
+  <div id="bottom-card-container">
+  <div id="bottom card" *ngFor="let animal of myUser.animal; let i = index">
+    <div *ngIf="currentCardIndex === 0 + i">
+      <div class="information-block">
+        <p class="animal-name">{{ myUser.animal[currentCardIndex].name }}</p>
+        <p>race : {{ myUser.animal[currentCardIndex].breed.breed }}</p>
+      </div>
+      <div class="animalImage">
+        <img
+          class="card-img-top shadow rounded float-start"
+          src="{{ myUser.animal[currentCardIndex].photo }}"
+          alt="user's animal photo"
+        />
+        <button
+          class="carousel-control-prev"
+          *ngIf="myUser.animal.length > 1"
+          (click)="previousCard()"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          *ngIf="myUser.animal.length > 1"
+          (click)="nextCard()"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+
+        <div class="carousel-indicators">
+          <div *ngIf="myUser.animal.length > 1">
+            <button
+              *ngFor="let animal of myUser.animal; let i = index"
+              type="button" [class.active]="currentCardIndex === i"
+              data-bs-target="#carouselExampleIndicators"
+              
+              class="active"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>

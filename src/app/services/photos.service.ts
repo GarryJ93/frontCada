@@ -11,22 +11,37 @@ export class PhotosService {
 
   constructor(private http: HttpClient) {}
 
-  addPhotos(Photos: Photos): Observable<Photos> {
-    const headers = new HttpHeaders({
-      Authorization: 'bearer' + localStorage.getItem('access_token'),
+  // addPhotos(Photos: Photos): Observable<Photos> {
+  //   const headers = new HttpHeaders({
+  //     Authorization: 'bearer' + localStorage.getItem('access_token'),
+  //   });
+  //   return this.http.post<Photos>('http://localhost:3000/api/photos', Photos, {
+  //     headers: headers,
+  //   });
+  // }
+
+  // getAllPhotos(): Observable<Photos[]> {
+  //   return this.http.get<Photos[]>('http://localhost:3000/api/photos');
+  // }
+
+  getImage() {
+    return this.http.get('http://localhost:3000/api/photos', {
+      responseType: 'blob',
     });
-    return this.http.post<Photos>('http://localhost:3000/api/photos', Photos, {
-      headers: headers,
+  }
+  getImageById(id: number) {
+    return this.http.get(`http://localhost:3000/api/photos/${id}`, {
+      responseType: 'blob',
     });
   }
 
-  getAllPhotos(): Observable<Photos[]> {
-    return this.http.get<Photos[]>('http://localhost:3000/api/photos');
+  postImage(formData: FormData) {
+    return this.http.post('http://localhost:3000/api/photos', formData);
   }
 
-  getPhotosById(id: number): Observable<Photos> {
-    return this.http.get<Photos>(`http://localhost:3000/api/photos/${id}`);
-  }
+  // getPhotosById(id: number): Observable<Photos> {
+  //   return this.http.get<Photos>(`http://localhost:3000/api/photos/${id}`);
+  // }
 
   modifyPhotos(id: number, updateData: Photos): Observable<Photos> {
     // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
@@ -44,6 +59,4 @@ export class PhotosService {
       headers: headers,
     });
   }
-
 }
-

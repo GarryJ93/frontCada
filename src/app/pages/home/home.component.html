@@ -1,19 +1,50 @@
 <app-nav-bar-connexion-inscription></app-nav-bar-connexion-inscription>
-<div class="accueil">
-<h1 class="text-center">CADA</h1>
-<p class="text-center">Bienvenue sur notre site de rencontres spécialement conçu pour les passionnés d'animaux de compagnie ! 
+<div
+  class="accueil d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="text-center">
+    <img [routerLink]="('/signin')"
+      src="../../../assets/logo.png"
+      class="img-fluid"
+      height="200px"
+      width="200px"
+    />
+  </div>
+  <div class="texte">
+    <h1>
+      Bienvenue sur votre site de rencontres spécialement conçu pour les
+      passionnés d'animaux 🐾 &#x2661; 🐾
+    </h1>
+    <p>
+      Que vous cherchiez un compagnon de promenade, des amis ou simplement
+      quelqu'un qui partagera votre passion pour nos amis à poils, plumes ou
+      écailles, vous êtes au bon endroit. Laissez votre animal vous guider vers
+      des amitiés inoubliables et peut-être... l'amour ?
+    </p>
+  </div>
 
-Que vous cherchiez un compagnon de promenade, des amis ou simplement quelqu'un qui comprend votre passion pour nos amis à poils, plumes ou écailles, vous êtes au bon endroit. Découvrez des personnes partageant votre passion pour les animaux, que vous soyez célibataire, à la recherche de nouvelles amitiés ou simplement envieux de voir vos compagnons devenir inséparables.
-
-Laissez votre animal vous guider vers des amitiés inoubliables et peut-être... l'amour ? 
-
-Rejoignez-nous, et qui sait, votre prochaine belle histoire pourrait commencer avec un simple "Wouaf" ou "Miaou" !</p>
-
-<div class="d-flex justify-content-between mt-5">
-<img src="../../../assets/personnes-agees-chat.jpg" alt="" class="picture-1">
-<div class="d-flex flex-column p-2">
-<img src="../../../assets/jeune-femme-son-animal-compagnie-bouledogue-francais-dans-parc.jpg" alt="" class="center-pic pb-2">
-<img src="../../../assets/couples-chien-au-bord-mer.jpg" alt="" class="center-pic">
+  <div class="d-flex justify-content-between mt-5">
+    <img
+      src="../../../assets/personnes-agees-chat.jpg"
+      alt=""
+      class="picture-1"
+    />
+    <div class="d-flex flex-column p-2">
+      <img
+        src="../../../assets/jeune-femme-son-animal-compagnie-bouledogue-francais-dans-parc.jpg"
+        alt=""
+        class="center-pic pb-2"
+      />
+      <img
+        src="../../../assets/couples-chien-au-bord-mer.jpg"
+        alt=""
+        class="center-pic"
+      />
+    </div>
+    <img
+      src="../../../assets/homme-barbu-caresser-oiseau-mignon.jpg"
+      alt=""
+      class="picture-2"
+    />
+  </div>
 </div>
-<img src="../../../assets/homme-barbu-caresser-oiseau-mignon.jpg" alt="" class="picture-2">
-</div></div>

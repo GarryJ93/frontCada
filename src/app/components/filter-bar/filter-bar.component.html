@@ -1,28 +1,72 @@
-<div class="filter-bar d-flex m-3">
-    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-  <label class="btn btn-filter" for="btncheck1">Chien</label>
+<div class="container filter-bar d-flex flex-row justify-content-between m-3 align-items-center border-color rounded shadow">
+  <p class="m-3 filter">Filtrer par: </p>
+  <div class="d-flex">
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic checkbox toggle button group"
+  >
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="btncheck1"
+      autocomplete="off"
+      value="Chien"
+      (change)="onCheckCategory($event)"
+    />
+    <label class="btn btn-filter" for="btncheck1">Chien</label>
 
-  <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-  <label class="btn btn-filter" for="btncheck2">Chat</label>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="btncheck2"
+      autocomplete="off"
+      value="Chat"
+      (change)="onCheckCategory($event)"
+    />
+    <label class="btn btn-filter" for="btncheck2">Chat</label>
 
-  <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-  <label class="btn btn-filter" for="btncheck3">NAC</label>
-   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-filter dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Département
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#"></a></li>
+    <input
+      type="checkbox"
+      class="btn-check"
+      id="btncheck3"
+      autocomplete="off"
+      value="NAC"
+      (change)="onCheckCategory($event)"
+    />
+    <label class="btn btn-filter" for="btncheck3">NAC</label>
+
+    <div class="btn-group" role="group">
+      <button
+        type="button"
+        class="btn btn-filter dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Département
+      </button>
+
+     <ul class="dropdown-menu">
+      <li *ngFor="let departement of userDpt">
+        <a class="dropdown-item" href="#">{{ departement }}</a>
+      </li>
     </ul>
-  </div>
-   <div class="btn-group" role="group">
-    <button type="button" class="btn btn-filter dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Genre
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#"></a></li>
+    </div>
+    <div class="btn-group" role="group">
+      <button
+        type="button"
+        class="btn btn-filter dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+
+        Genre
+      </button>
+      <ul class="dropdown-menu">
+      <li *ngFor="let gender of genderUser">
+        <a class="dropdown-item" href="#">{{ gender.gender }}</a>
+      </li>
     </ul>
+    </div></div>
   </div>
-</div>
 </div>

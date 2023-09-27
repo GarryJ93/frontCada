@@ -22,6 +22,10 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { AnimalCardComponent } from './components/animal-card/animal-card.component';
+import { ProfilAnimalCrudComponent } from './components/profil-animal-crud/profil-animal-crud.component';
+import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-user-crud.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ConsultationComponent } from './pages/consultation/consultation.compone
     ProfileCardsComponent,
     ProfileListComponent,
     ConsultationComponent,
+    ModalComponent,
+    AnimalCardComponent,
+    ProfilAnimalCrudComponent,
+    ProfilUserCrudComponent,
   ],
 
   imports: [

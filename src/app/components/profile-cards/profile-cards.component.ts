@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Animals } from 'src/app/models/animals';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Photos } from 'src/app/models/photos';
 import { Users } from 'src/app/models/users';
-import { AnimalsService } from 'src/app/services/animals.service';
 import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
@@ -13,32 +12,79 @@ import { PhotosService } from 'src/app/services/photos.service';
 })
 export class ProfileCardsComponent {
   @Input() myUser!: Users;
-  userPicture!: Photos;
-  userAnimal!: Animals;
+  @Input() image!: Photos[];
+  card!: HTMLElement | null;
+  currentImage!: Blob;
+  animalCurrentImage!: Blob;
+  userImage!: any;
+  animalImage!: any;
 
   constructor(
-    private photoService: PhotosService,
-    private animalsService: AnimalsService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private photoService: PhotosService
+  ) { }
 
   ngOnInit() {
-    this.animalsService.getAnimalByUserId(this.userAnimal.id_animals).subscribe((userAnimal) => {
-      this.userAnimal = userAnimal;
-      console.log(this.userAnimal);
+    const myUserIdPhoto = this.myUser.id_photo;
+    this.photoService.getImageById(myUserIdPhoto).subscribe({
+      next: (data: Blob) => {
+        this.currentImage = data;
+        this.createImageFromBlob(this.currentImage);
+      },
     });
-    if (this.myUser.id_photo) {
-      const idUser = this.myUser.id_photo;
-      this.photoService.getPhotosById(idUser).subscribe((userPicture) => {
-        this.userPicture = userPicture;
-      });
+
+    if (this.myUser.animal) {
+      for (let animal of this.myUser.animal) {
+        const animalIdPhoto = animal.id_photo;
+        console.log('id animal: ', animalIdPhoto);
+        this.photoService.getImageById(animalIdPhoto).subscribe({
+          next: (data: Blob) => {
+            this.animalCurrentImage = data;
+            this.createAnimalImageFromBlob(
+              this.animalCurrentImage,
+              animal.id_animals
+            );
+          },
+        });
+      }
     }
-    // if (this.userAnimal.id_user === idUser) {
-    //   this.animalsService.getAnimalById(idUser).subscribe((userAnimal) => {
-    //     this.userAnimal = userAnimal;
-    //     // console.log(this.userAnimal);
-    //   })
-    // }
+  }
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.addEventListener('load', () => {
+      this.userImage = reader.result;
+    });
+  }
+
+  createAnimalImageFromBlob(image: Blob, idAnimal: number) {
+    let reader = new FileReader();
+    reader.readAsDataURL(image);
+    const currentAnimal = this.myUser.animal.find(
+      (x) => x.id_animals === idAnimal
+    );
+
+    reader.addEventListener('load', () => {
+      if (currentAnimal)
+        currentAnimal.picture = reader.result;
+
+    });
+  }
+  ngAfterViewInit() {
+    // console.log("myUser:", this.myUser);
+
+    const routeParam = this.route.snapshot.paramMap;
+    const IdFromRoute = routeParam.get('id');
+
+    if (IdFromRoute) {
+      console.log('id: ' + IdFromRoute);
+      console.log(typeof IdFromRoute);
+      this.card = document.getElementById(IdFromRoute);
+      console.log(this.card);
+      console.log(this.myUser.id_photo);
+
+      this.card?.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

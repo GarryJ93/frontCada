@@ -43,15 +43,23 @@ export class LoginComponent implements OnInit{
 
       let username = this.connexion.value.username;
       let password = this.connexion.value.password;
-  this.authService.login(username, password).subscribe({
-      next: (response: any) => {
+  this.userService.login(username, password).subscribe({
+    next: (response: any) => {
+      console.log('Réponse complète du serveur :', response)
+      if (response && response.accessToken) {
+        // Stocker le token dans le localStorage
         localStorage.setItem('access_token', response.accessToken);
-        console.log('Réponse complète du serveur :', response.accessToken);
+        console.log('Connexion réussie et token stocké!');
         this.router.navigate(['/accueil']);
-      },
-    });
+      } else {
+        console.error('Token non reçu dans la réponse.');
+      }
+    },
+    error: (error: any) => {
+      console.error('Erreur lors de la connexion:', error);
     }
-
-  }
+  });
+}
+};
 }
 

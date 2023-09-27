@@ -1,6 +1,31 @@
 img {
-  width: 100%;
-  height: auto;
+  width: 6.5rem;
+  height: 6.5rem;
 }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.information-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#top{
+display: flex;
+justify-content: space-between;
+}
+
+
+
+.user-name {
+  font-size: x-large;
+}
+
 
 
