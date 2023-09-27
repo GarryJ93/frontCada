@@ -1,4 +1,4 @@
 
 <app-nav-bar></app-nav-bar>
-<app-filter-bar></app-filter-bar>
+<app-filter-bar (categCheckedEvent)="categoriesReceived($event)" [userDpt]="userDepartement" [genderUser]="genderUsers"></app-filter-bar>
 <app-profile-list [recupUsers]="userToDisplay" [imageList]="imageToShow" class="m-5"></app-profile-list>

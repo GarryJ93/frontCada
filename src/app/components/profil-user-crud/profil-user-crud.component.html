@@ -1,0 +1,101 @@
+<h3>Profil Utilisateur</h3>
+<div class="top d-flex justify-content-between">
+    <!-- <img src="" alt="{{RecupUserProfil.id_photo}}"> -->
+
+    <div class="right">
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.username}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.username" placeholder="nom de l'user">
+
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.firstname}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.firstname" placeholder="âge de l'user">
+
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.email}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.email" placeholder="race de l'user">
+
+        <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.city}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.city" placeholder="espèce de l'user">
+
+        <button>Ajouter</button>
+        <button (click)="toggleEdit()">{{isEditing ? 'Sauvegarder' : 'Modifier'}}</button>
+        <button>Supprimer</button>
+
+    </div>
+</div>
+
+
+<app-profil-animal-crud [animalsProfil]="animalsUserProfil"></app-profil-animal-crud>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container d-flex justify-content-center mt-2">
+    <div class="card w-100">
+        <div class="d-flex flex-row">
+            <div>
+                <img src="https://img.freepik.com/premium-photo/man-have-long-beard-nice-hairstyle-wearing-trendy-high-quality-suit_758367-9588.jpg?w=360" class="img-fluid profile-image shadow mytext"  width="300px" >
+            </div>
+            <div class="group-descrip input-group mb-6 d-flex align-items-end flex-column">
+                <span class="input-group-text shadow mytext w-100" id="inputGroup-sizing-default">Description</span>
+                <textarea formControlName="description" class="form-control shadow mytext w-100" rows="3" id="inputDescription"></textarea>
+            </div>
+        </div>
+        <form [formGroup]="formProfilUser" (ngSubmit)="onSubmit()" class="formcontainer">
+            <div class="group-id d-flex justify-content-start align-items-start flex-wrap ">
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Sexe</span>
+                    <input formControlName="gender_user" type="text" class="form-control shadow mytext" placeholder="{{RecupUserProfil.id_gender_user}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Pseudo</span>
+                    <input formControlName="username" type="text" class="form-control shadow mytext" placeholder="{{RecupUserProfil.username}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Prénom</span>
+                    <input formControlName="firstname" type="text" class="form-control shadow mytext" placeholder="{{RecupUserProfil.firstname}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Ville</span>
+                    <input formControlName="city" type="text" class="form-control shadow mytext" placeholder="{{RecupUserProfil.city}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Département</span>
+                    <input formControlName="departement" type="text" class="form-control shadow mytext" placeholder="{{RecupUserProfil.departement}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">E-mail</span>
+                    <input formControlName="email" type="email" class="form-control shadow mytext" placeholder="{{RecupUserProfil.email}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Mot de passe</span>
+                    <input formControlName="password" type="password" class="form-control shadow mytext" placeholder="{{RecupUserProfil.password}} ">
+                </div>
+                <div class="input-group mb-3 col-xs-2">
+                    <input formControlName="photo" type="file" class="form-control shadow " id="inputPhoto" >
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-end text-right mr-2">
+                <button type="submit" class="btn btn-warning">Modifier</button>
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </div>
+        </form>
+    </div>
+</div> -->

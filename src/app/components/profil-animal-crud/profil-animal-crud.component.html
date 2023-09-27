@@ -1,0 +1,88 @@
+<h3>Profil animal</h3>
+
+<div class="carousel">
+  <div id="bottom-card-container">
+    <div *ngFor="let animalProfil of animalsProfil; let i = index">
+      <div *ngIf="currentAnimalIndex === 0 + i">
+        <div class="top d-flex justify-content-between">
+          <button *ngIf="animalsProfil.length > 1" (click)="previousAnimal()">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+
+          <button *ngIf="animalsProfil.length > 1" (click)="nextAnimal()">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+          <img src="{{ animalProfil.photo.path }}" alt="" />
+
+          <div class="right">
+            <div *ngIf="!isEditing && animalProfil">
+              {{ animalProfil.name }}
+            </div>
+            <input
+              *ngIf="isEditing"
+              [(ngModel)]="animalProfil.name"
+              placeholder="nom de l'user"
+            />
+
+            <!-- <div *ngIf="!isEditing && animalProfil">{{animalProfil.firstname}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="animalProfil.firstname" placeholder="âge de l'user">
+
+        <div *ngIf="!isEditing && animalProfil">{{animalProfil.email}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="animalProfil.email" placeholder="race de l'user">
+
+        <div *ngIf="!isEditing && animalProfil">{{animalProfil.city}}</div>
+        <input *ngIf="isEditing" [(ngModel)]="animalProfil.city" placeholder="espèce de l'user"> -->
+
+            <button>Ajouter</button>
+            <button (click)="toggleEdit(i)">
+              {{ isEditing ? "Sauvegarder" : "Modifier" }}
+            </button>
+            <button>Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container d-flex justify-content-center mt-2">
+    <div class="card w-100 ">
+        <div class="d-flex flex-row">
+
+            <div>
+                <img src="https://cdn.unitycms.io/images/B9n7d8614fOAbH8d4xeisX.jpg?op=ocroped&val=1200,1200,1000,1000,0,0&sum=L81A9IOsKa8"
+                    class="img-fluid profile-image shadow mytext d-flex justify-content-center" width="250px">
+            </div>
+            <div class="group-id  ">
+                <form [formGroup]="formProfilanimal" (ngSubmit)="onSubmit()" class="formcontainer d-flex  align-items-start flex-row flex-wrap">
+                    <div class="input-group mb-3 col-xs-2">
+                        <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Prenom</span>
+                        <input formControlName="firstname" type="text" class="form-control shadow mytext">
+                    </div>
+                    <div class="input-group mb-3 col-xs-2">
+                        <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">age</span>
+                        <input formControlName="age" type="number" class="form-control shadow mytext">
+                    </div>
+                    <div class="input-group mb-3 col-xs-2">
+                        <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Sexe</span>
+                        <input formControlName="sex_animal" type="text" class="form-control shadow mytext">
+                    </div>
+                    <div class="input-group mb-3 col-xs-2">
+                        <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Espèce</span>
+                        <input formControlName="species" type="text" class="form-control shadow mytext">
+                    </div>
+                    <div class="input-group mb-3 col-xs-2">
+                        <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Race</span>
+                        <input formControlName="race" type="text" class="form-control shadow mytext">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="d-flex flex-row justify-content-end text-right mr-2 ">
+            <button type="submit" class="btn btn-warning">Ajoutetr</button>
+            <button type="submit" class="btn btn-warning">Modifier</button>
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+        </div>
+    </div>
+</div> -->

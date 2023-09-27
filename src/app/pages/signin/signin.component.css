@@ -2,12 +2,14 @@
 * {
   padding: 0;
   margin: 0;
+
 }
 
 /* Configuration du corps de la page */
 body {
   height: 100vh;
   width: 100%;
+  overflow-y:hidden;
 }
 
 /* Configuration du conteneur principal */
@@ -132,4 +134,3 @@ select {
   border-radius: 45px;
 
 }
-
