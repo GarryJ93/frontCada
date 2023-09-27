@@ -12,7 +12,7 @@
           <button *ngIf="animalsProfil.length > 1" (click)="nextAnimal()">
             <span class="carousel-control-next-icon"></span>
           </button>
-          <img src="{{ animalProfil.photo.path }}" alt="" />
+          <img src="{{ animalProfil.photo }}" alt="" />
 
           <div class="right">
             <div *ngIf="!isEditing && animalProfil">
