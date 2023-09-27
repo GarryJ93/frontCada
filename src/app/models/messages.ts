@@ -1,5 +1,10 @@
+import { Users } from "./users";
+
 export interface Messages {
-    id_message:number;
-    date :Date;
-    message: string;
+    id: number;
+    username: string;
+    sender_id: Users;
+    receiver_id: Users;
+    content: string;
+    timestamp: Date;
 }
