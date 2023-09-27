@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit{
         // Stocker le token dans le localStorage
         localStorage.setItem('access_token', response.accessToken);
         console.log('Connexion réussie et token stocké!');
+        this.router.navigate(['/accueil']);
       } else {
         console.error('Token non reçu dans la réponse.');
       }
