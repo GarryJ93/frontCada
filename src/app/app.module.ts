@@ -26,6 +26,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AnimalCardComponent } from './components/animal-card/animal-card.component';
 import { ProfilAnimalCrudComponent } from './components/profil-animal-crud/profil-animal-crud.component';
 import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-user-crud.component';
+import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
+import { SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-us
     AnimalCardComponent,
     ProfilAnimalCrudComponent,
     ProfilUserCrudComponent,
+    ChatModalComponent,
   ],
 
   imports: [
@@ -57,6 +60,7 @@ import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-us
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    SocketIoModule.forRoot({ url: 'http://localhost:3000', options: {} }),
   ],
   providers: [
     {
