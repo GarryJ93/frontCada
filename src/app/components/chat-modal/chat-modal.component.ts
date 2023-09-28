@@ -18,8 +18,8 @@ export class ChatModalComponent implements OnInit {
   messages: Messages[] = [];
   messageForm: FormGroup;
   currentUser = { id: this.userService.getUserConnected()! };
-
   receiverUser = localStorage.getItem('receiverId')!
+  senderUsername : string = localStorage.getItem('username')!;
 
   @Input() otherUserId!: number;
   @Input() selectedUser!: Users;
@@ -41,14 +41,12 @@ export class ChatModalComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("ID utilisateur courant:", this.currentUser.id);
-    this.loadMessages();  
-
+    this.loadMessages(); 
   }
 
   loadMessages(): void {
     console.log('ESSAYE DE RECUP DES MESSAGES')
     const currentUserId = this.currentUser.id;
- 
 
     this.messageService.getUserChats(currentUserId, +(this.receiverUser)).subscribe({
       next: (existingMessages: Messages[]) => {
@@ -82,6 +80,7 @@ export class ChatModalComponent implements OnInit {
         console.log('Messages avant ajout:', this.messages);
         this.messages.push(newMessage);
         console.log('Messages après ajout:', this.messages)
+        console.log('ENVOYEUR DATA', data.sender)
       }
       
     });
@@ -89,26 +88,6 @@ export class ChatModalComponent implements OnInit {
   }
 
 
-//   sendMessage(content: string, receiverId: number): void {
-//     if (this.messageForm.valid && this.currentUser.id) {
-//       const newMessage : Messages = this.messageForm.get('newMessage')?.value.trim();
-//       console.log('OOOOOOOOOOOOOOOOOOOOOOOOO', newMessage.date); //UNDEFINED
-//       console.log(this.messageForm)
-//       console.log('receveur', this.receiverUser);
-//       console.log('expéditeur du massage', this.currentUser.id)
-
-
-
-//       if (newMessage) {
-//         this.messageService.sendMessage(newMessage, this.currentUser.id, +this.receiverUser).subscribe(data => {
-//           this.messageForm.reset();
-//         });
-//         this.ws.emit('msgToServer', newMessage);
-//       }
-
-//   }
-// }
-    
 
   sendMessage(): void {
     if (this.messageForm.valid && this.currentUser.id) {
@@ -116,7 +95,7 @@ export class ChatModalComponent implements OnInit {
       if (newMessageContent) {
         const newMessage: Messages = {
           id_message: 0,
-          username: 'VotreUsername', 
+          username: this.senderUsername, 
           sender: {id_user: +this.currentUser.id}, 
           receiver: { id_user: +this.receiverUser }, 
           message: newMessageContent,

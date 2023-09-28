@@ -8,7 +8,7 @@
       <div class="send" id="messages">
         <!-- <pre>{{ message | json }}</pre> -->
         <div *ngIf="message?.sender?.id_user === currentUser.id" class="my-message">
-          <div class="name">{{ message.sender.username }}</div>
+          <div class="name">{{senderUsername }}</div>
           <div>
             {{ message.message }}
            
@@ -23,7 +23,7 @@
           *ngIf="message?.sender?.id_user!== currentUser.id"
           class="other-message"
         >
-          <div class="name">{{ message.sender.username }}</div>
+          <div class="name">{{ message.username || message.sender.username}}</div>
           <div>
             {{ message.message }}
            <p class="time">{{message.date | date : "HH:mm dd/MM/yyyy "}}</p>
