@@ -6,7 +6,7 @@
 .my-message{
   display: flex;
   justify-content: right;
-  background-color: lightblue;
+  background-color: #ffa52669;
   border-radius: 25px;
   width: auto;
 }
@@ -14,7 +14,7 @@
 .other-message{
   display: flex;
   justify-content: left;
-  background-color: lightgreen;
+  background-color: #c93c2071;
     border-radius: 25px;
   width: auto;
 }
@@ -37,13 +37,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border-color: #007bff; 
+  border-color: #C93C20; 
 }
 
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #007bff;
+  background-color: #c93c20c9;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -51,7 +51,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #C93C20;
 } 
 
 
@@ -83,4 +83,14 @@ div{
 div.message{
   margin: 0px;
   padding: 0px;
+}
+
+.close{
+    display: flex;
+    justify-content: right;
+}
+
+h1{
+    font-size:2rem;
+    color: rgb(149, 128, 128);
 }
