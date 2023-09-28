@@ -47,8 +47,9 @@ export class ChatModalComponent implements OnInit {
   loadMessages(): void {
     console.log('ESSAYE DE RECUP DES MESSAGES')
     const currentUserId = this.currentUser.id;
+    const receiverId = this.selectedUser.id_user;
 
-    this.messageService.getUserChats(currentUserId, +(this.receiverUser)).subscribe({
+    this.messageService.getUserChats(currentUserId, receiverId).subscribe({
       next: (existingMessages: Messages[]) => {
         console.log("Messages bruts reçus :", existingMessages);
         this.messages = existingMessages;

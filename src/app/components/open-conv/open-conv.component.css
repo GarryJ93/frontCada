@@ -20,3 +20,7 @@ button:active{
 div{
     border-color: #c93c20a8;
 }
+
+.custom-modal-width .modal-dialog {
+    max-width: 90%;
+}

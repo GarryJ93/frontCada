@@ -94,9 +94,9 @@ export class ConsultationComponent {
   // }
 
   openChatModal(){
-    const modalRef = this.modalService.open(ChatModalComponent, { centered: true, size: 'lg' });
+    const modalRef = this.modalService.open(ChatModalComponent, { centered: true, size: 'lg', windowClass: 'custom-modal-width' });
     modalRef.componentInstance.selectedUser = this.currentUser;
-    localStorage.setItem('receiverUsername:', this.currentUser.firstname);
+    // localStorage.setItem('receiverUsername:', this.currentUser.firstname);
     modalRef.componentInstance.usernameFromParent = this.currentUser.username;
   }
 
