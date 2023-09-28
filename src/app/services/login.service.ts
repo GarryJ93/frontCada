@@ -12,12 +12,6 @@ export class LoginService {
   constructor(private http: HttpClient) {}
   login(username: string, password: string): Observable<Connexion> {
     const body = { username: username, password: password };
-    console.log('le body', body);
-    console.log('le bddurl', this.bddURL);
-    console.log(
-      'le post',
-      (this.bddURL + '/login')
-    );
-    return this.http.post<Connexion>(this.bddURL + '/login', body);
+       return this.http.post<Connexion>(this.bddURL + '/login', body);
   }
 }

@@ -11,12 +11,17 @@ export class FilterBarComponent {
   @Input() genderUser!: GenderUser[];
 
   @Output() categCheckedEvent = new EventEmitter<string[]>();
+  @Output() departementCheckedEvent = new EventEmitter<number>();
+  @Output() genderCheckedEvent = new EventEmitter<string>();
 
   categoriesChecked: string[] = [];
+  departementSelected!: number;
+  genderSelected!: string;
+
+  //Filtre Espèces
 
   onCheckCategory(e: Event) {
     const target = e.target as HTMLInputElement;
-    console.log("gender",this.genderUser);
 
     if (target.checked) {
       this.categoriesChecked.push(target.value);
@@ -27,7 +32,22 @@ export class FilterBarComponent {
         this.categoriesChecked.splice(index, 1);
       }
     }
-    console.log('cat checkes', this.categoriesChecked);
     this.categCheckedEvent.emit(this.categoriesChecked);
+  }
+
+  //Filtre Départements
+
+  onCheckDpt(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.departementSelected = parseInt(target.value);
+    this.departementCheckedEvent.emit(this.departementSelected);
+  }
+
+  //Filtre Genres
+
+  onCheckGender(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.genderSelected = target.value;
+    this.genderCheckedEvent.emit(this.genderSelected);
   }
 }
