@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Messages } from '../models/messages';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { Users } from '../models/users';
 
 @Injectable({
   providedIn: 'root',
@@ -49,5 +50,10 @@ export class MessagesService {
       })
 
     );
+  }
+
+
+  getUserConversations(userId: number): Observable<Users[]> {
+    return this.http.get<Users[]>(`${this.BASE_URL}/messages/list/${userId}`);
   }
 }

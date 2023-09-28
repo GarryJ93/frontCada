@@ -29,6 +29,7 @@ import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-us
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 import { SocketIoModule } from 'ngx-socket-io';
 import { WebSocketService } from './services/web-socket.service';
+import { OpenConvComponent } from './components/open-conv/open-conv.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { WebSocketService } from './services/web-socket.service';
     ProfilAnimalCrudComponent,
     ProfilUserCrudComponent,
     ChatModalComponent,
+    OpenConvComponent,
   ],
 
   imports: [
