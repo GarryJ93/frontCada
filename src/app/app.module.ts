@@ -28,6 +28,7 @@ import { ProfilAnimalCrudComponent } from './components/profil-animal-crud/profi
 import { ProfilUserCrudComponent } from './components/profil-user-crud/profil-user-crud.component';
 import { ChatModalComponent } from './components/chat-modal/chat-modal.component';
 import { SocketIoModule } from 'ngx-socket-io';
+import { WebSocketService } from './services/web-socket.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { SocketIoModule } from 'ngx-socket-io';
     FormsModule,
     SocketIoModule.forRoot({ url: 'http://localhost:3000', options: {} }),
   ],
-  providers: [
+  providers: [WebSocketService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

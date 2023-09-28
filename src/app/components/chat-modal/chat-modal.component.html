@@ -20,7 +20,7 @@
       </div>
       <div class="receive">
         <div
-          *ngIf="message?.sender?.id_user !== currentUser.id"
+          *ngIf="message?.sender?.id_user!== currentUser.id"
           class="other-message"
         >
           <div class="name">{{ message.sender.username }}</div>
@@ -34,7 +34,7 @@
   </div>
   <form
     [formGroup]="messageForm"
-    (ngSubmit)="sendMessage(messageForm.get('newMessage')?.value, otherUserId)"
+    (ngSubmit)="sendMessage()"
   >
     <input
       type="text"

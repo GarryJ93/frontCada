@@ -23,7 +23,7 @@ export class MessagesService {
     return headers;
   }
 
-  sendMessage(message: string, senderId: number, receiverId: number) {
+  sendMessage(message: Messages, senderId: number, receiverId: number) {
     const headers = this.getHeaders();
     const body = { message, senderId, receiverId };
     return this.http.post<Messages>(`${this.BASE_URL}/messages`, body, { headers });

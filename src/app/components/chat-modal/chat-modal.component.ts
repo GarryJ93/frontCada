@@ -18,12 +18,13 @@ export class ChatModalComponent implements OnInit {
   messages: Messages[] = [];
   messageForm: FormGroup;
   currentUser = { id: this.userService.getUserConnected()! };
+
   receiverUser = localStorage.getItem('receiverId')!
 
   @Input() otherUserId!: number;
   @Input() selectedUser!: Users;
 
-  content!: string;
+
 
   constructor(
     private fb: FormBuilder,
@@ -66,6 +67,8 @@ export class ChatModalComponent implements OnInit {
 
     this.ws.listen('msgToClient').subscribe((data: any) => {
       console.log("Data recu du serveur:", data);
+      console.log('Type de data:', typeof data);
+      console.log('Valeur de data:', data);
 
       if (typeof data === 'object' && 'sender' in data && 'receiver' in data && 'message' in data && 'date' in data) {
         const newMessage: Messages = {
@@ -76,34 +79,54 @@ export class ChatModalComponent implements OnInit {
           message: data.message,
           date: new Date(data.date),
         };
-
+        console.log('Messages avant ajout:', this.messages);
         this.messages.push(newMessage);
-
-       
-       
+        console.log('Messages après ajout:', this.messages)
       }
-      console.log('Tableau message actuel', this.messages)
-  
+      
     });
-
-
+  
   }
 
 
-  sendMessage(content: string, receiverId: number): void {
+//   sendMessage(content: string, receiverId: number): void {
+//     if (this.messageForm.valid && this.currentUser.id) {
+//       const newMessage : Messages = this.messageForm.get('newMessage')?.value.trim();
+//       console.log('OOOOOOOOOOOOOOOOOOOOOOOOO', newMessage.date); //UNDEFINED
+//       console.log(this.messageForm)
+//       console.log('receveur', this.receiverUser);
+//       console.log('expéditeur du massage', this.currentUser.id)
+
+
+
+//       if (newMessage) {
+//         this.messageService.sendMessage(newMessage, this.currentUser.id, +this.receiverUser).subscribe(data => {
+//           this.messageForm.reset();
+//         });
+//         this.ws.emit('msgToServer', newMessage);
+//       }
+
+//   }
+// }
+    
+
+  sendMessage(): void {
     if (this.messageForm.valid && this.currentUser.id) {
-      const newMessage = this.messageForm.get('newMessage')?.value.trim();
-      console.log(newMessage); //OK
-      console.log(this.messageForm)
-      console.log('receveur', this.receiverUser);
-      console.log('expéditeur du massage', this.currentUser.id)
+      const newMessageContent = this.messageForm.get('newMessage')?.value.trim();
+      if (newMessageContent) {
+        const newMessage: Messages = {
+          id_message: 0,
+          username: 'VotreUsername', 
+          sender: {id_user: +this.currentUser.id}, 
+          receiver: { id_user: +this.receiverUser }, 
+          message: newMessageContent,
+          date: new Date(),
+        };
 
-
-
-      if (newMessage) {
-        this.messageService.sendMessage(newMessage, this.currentUser.id, +this.receiverUser).subscribe(data => {
+        this.messageService.sendMessage(newMessageContent, this.currentUser.id, +this.receiverUser).subscribe(data => {
           this.messageForm.reset();
         });
+
         this.ws.emit('msgToServer', newMessage);
       }
     }
@@ -115,5 +138,3 @@ export class ChatModalComponent implements OnInit {
 
 
 }
-
-
