@@ -96,12 +96,12 @@ export class AddNewAnimalComponent {
     }
     this.animalService.addAnimals(newAnimal).subscribe({
       next: () => {
-        alert('Utilisateur ajouté avec succès !');
+        alert('Votre animal a été ajouté !');
         this.addAnimal.reset();
         this.router.navigate(['/login']);
       },
       error: (error) => {
-        console.error("Erreur lors de l'ajout de l'utilisateur", error);
+        console.error("Erreur lors de l'ajout de l'animal", error);
       },
     });
   }

@@ -50,9 +50,9 @@ export class SigninComponent {
       password: new FormControl('', Validators.required),
       departement: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      id_gender_user: new FormControl('', Validators.required),
-      id_photo: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      id_gender_user: new FormControl(''),
+      id_photo: new FormControl(''),
     });
   }
 
