@@ -26,6 +26,7 @@ export class OpenConvComponent {
   }
 
   continueConversation(user:Users){
+    localStorage.setItem('receiverId', user.id_user.toString());
     console.log('Ouverture de la modal pour user :', user)
     const modalRef = this.modalService.open(ChatModalComponent, {
       centered: true,
