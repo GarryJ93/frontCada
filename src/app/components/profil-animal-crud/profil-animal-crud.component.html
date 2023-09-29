@@ -75,6 +75,7 @@
                   class="form-control m-2"
                   [(ngModel)]="animalProfil.breed.species.species"
                   placeholder="{{ animalProfil.breed.species.species }}"
+                  readOnly
                 />
               </div>
               <div *ngIf="!isEditing && animalProfil">
@@ -87,6 +88,7 @@
                   class="form-control m-2"
                   [(ngModel)]="animalProfil.breed.breed"
                   placeholder="{{ animalProfil.breed.breed }}"
+                  readonly
                 />
               </div>
               <div *ngIf="!isEditing && animalProfil">
@@ -99,6 +101,7 @@
                   class="form-control m-2"
                   [(ngModel)]="animalProfil.sexAnimal.sex"
                   placeholder="{{ animalProfil.sexAnimal.sex }}"
+                  readonly
                 />
               </div>
 

@@ -33,11 +33,12 @@ export class AnimalsService {
     );
   }
 
-  modifyAnimals(id: number, updateData: Animals): Observable<Animals> {
+  modifyAnimals(id: number, updateData: Partial<Animals>): Observable<Partial<Animals>> {
     // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
+    delete updateData.photo
     return this.http.patch<Animals>(
       `http://localhost:3000/api/animals/${id}`,
-      updateData,
+      updateData
     );
   }
 
