@@ -63,6 +63,6 @@ export class AnimalsService {
   }
 
     getAnimalByUserId(id: number): Observable<Animals> {
-        return this.http.get<Animals>(`http://localhost:3000/api/animals/user/${id}`);
+      return this.http.get<Animals>(`http://localhost:3000/api/animals/user/${id}`, { headers: this.getHeaders() });
   }
 }
