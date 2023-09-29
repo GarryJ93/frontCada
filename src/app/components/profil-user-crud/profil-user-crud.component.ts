@@ -37,6 +37,18 @@ export class ProfilUserCrudComponent implements OnChanges {
       this.userService
         .modifyUsers(this.RecupUserProfil.id_user, this.RecupUserProfil)
         .subscribe({});
+      
     }
+  }
+
+  deleteMyAccount(){
+    this.userService.deleteUsers(this.RecupUserProfil.id_user).subscribe({
+      next: (response) => {
+        alert('vous avez bien supprimer votre compte')
+      }, error:(error) => {
+        console.error('erreur lors de la suppression',error)
+      }
+    });
+    console.log("user supromer",this.RecupUserProfil.id_user)
   }
 }
