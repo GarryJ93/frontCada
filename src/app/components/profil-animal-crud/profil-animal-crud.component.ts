@@ -21,10 +21,11 @@ export class ProfilAnimalCrudComponent implements OnChanges {
   isEditing = false;
   currentAnimalIndex = 0;
   numberOfAnimals!: number;
-  
 
-  constructor(private animalsService: AnimalsService) {}
+  constructor(private animalsService: AnimalsService,
+    private router: Router) {}
 
+  // Passage en mode edition
   toggleEdit(i: number) {
     this.isEditing = !this.isEditing;
     console.log(this.animalsProfil[i].id_animals);
@@ -44,6 +45,18 @@ export class ProfilAnimalCrudComponent implements OnChanges {
   }
 
 
+
+
+
+  goPageAddAnimal(){
+    this.router.navigate(['/addNewAnimal'])
+  };
+
+  ngOnChanges() {
+    // Variable pour le modulo des fonctions next & previous
+    this.numberOfAnimals = this.animalsProfil.length;
+  }
+  // Méthode pour afficher la carte précédente
   previousAnimal() {
     this.currentAnimalIndex =
       (this.currentAnimalIndex - 1 + this.numberOfAnimals) %
@@ -57,10 +70,4 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     console.log('ca tourne1', this.currentAnimalIndex);
     console.log('ca tourne2', this.numberOfAnimals);
   }
-
-  ngOnChanges() {
-    this.numberOfAnimals = this.animalsProfil.length;
-  }
-
-
 }

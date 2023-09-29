@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit{
       if (response && response.accessToken) {
         // Stocker le token dans le localStorage
         localStorage.setItem('access_token', response.accessToken);
+        
         console.log('Connexion réussie et token stocké!');
         this.router.navigate(['/accueil']);
       } else {

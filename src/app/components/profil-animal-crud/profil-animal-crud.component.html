@@ -18,13 +18,8 @@
             <div *ngIf="!isEditing && animalProfil">
               {{ animalProfil.name }}
             </div>
-            <input
-              *ngIf="isEditing"
-              [(ngModel)]="animalProfil.name"
-              placeholder="nom de l'user"
-            />
-
-            <button>Ajouter</button>
+            <input *ngIf="isEditing" [(ngModel)]="animalProfil.name" placeholder="nom de l'user" />
+            <button (click)="goPageAddAnimal()">Ajouter</button>
             <button (click)="toggleEdit(i)">
               {{ isEditing ? "Sauvegarder" : "Modifier" }}
             </button>
@@ -35,4 +30,3 @@
     </div>
   </div>
 </div>
-
