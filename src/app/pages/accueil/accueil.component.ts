@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { response } from 'express';
 import { Animals } from 'src/app/models/animals';
 import { GenderUser } from 'src/app/models/gender-users';
 import { Photos } from 'src/app/models/photos';
@@ -16,10 +14,9 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./accueil.component.css'],
 })
 export class AccueilComponent {
+  currentUser!: Users;
   userToDisplay!: Users[];
   allUsers: Users[] = [];
-  photosToDisplay!: Photos[];
-  allPhotos: Photos[] = [];
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
   isImageLoading!: Boolean;
@@ -29,7 +26,7 @@ export class AccueilComponent {
   genderUsers!: GenderUser[];
   departementFiltered: number | undefined;
   departementSelected!: number;
-  genderFiltered: string | undefined;
+  genderFiltered: string = "Genre";
 
   constructor(
     private usersService: UsersService,
@@ -52,15 +49,15 @@ export class AccueilComponent {
           ];
         }
       },
-    });
-
+    });  
+    
+    
     this.animalsService.getAllAnimals().subscribe({
       next: (response) => {
         {
           this.allAnimals = [...response];
           this.animalsToDisplay = [...response];
         }
-        console.log(this.allAnimals);
       },
     });
 
@@ -73,52 +70,57 @@ export class AccueilComponent {
 
   categoriesReceived(categoriesSelected: string[]) {
     this.categoriesFiltered = categoriesSelected;
-    console.log('cat dans accueil', this.categoriesFiltered);
-
-    // this.userToDisplay = this.userToDisplay.filter((user) =>
-    //   this.categoriesFiltered.includes(user.animal[0].breed.species.species)
-    // );
-    // console.log(this.userToDisplay);
     this.letsFilter();
   }
-  departementReceived(departement: number)
-
-  {
-this.departementFiltered = departement;
-
-    console.log(departement,"ok");
-
-
-    // ajouter la logique de filtre pour :
-    // filtrer la liste (this.userToDisplay)
-    // fonction du departement récuperer en paramètre
-    // réassigner le resultat du filtre dans (this.userToDisplay)
+  
+  departementReceived(departementSelected: number) {
+    this.departementFiltered = departementSelected;
+    this.letsFilter();
   }
-  genderReceived(gender : string)
-{
+  
+  genderReceived(genderSelected: string) {
+    this.genderFiltered = genderSelected;
+    this.letsFilter();
+  }
 
-  this.genderFiltered = this.genderFiltered;
-
-
-  console.log("coucou",gender);
- this.letsFilter();
-}
+ 
 
   letsFilter() {
     this.userToDisplay = [...this.allUsers];
-    this.userToDisplay = this.userToDisplay.filter((user) =>
-      this.categoriesFiltered.includes(user.animal[0].breed.species.species)
-     
-      
-    );console.log(this.userToDisplay);
-    if (this.categoriesFiltered.length === 0) {
-      this.userToDisplay = [...this.allUsers];
+    
+    if (this.categoriesFiltered.length != 0) {
+      this.userToDisplay = this.userToDisplay.filter((user) =>
+      user.animal.some((animal) =>
+      this.categoriesFiltered.includes(animal.breed.species.species)
+      )
+      );
     }
-    console.log('this.userToDisplay', this.userToDisplay);
-  }
+    
+    if (this.departementFiltered) {
+      this.userToDisplay = this.userToDisplay.filter(
+        (user) => user.departement === this.departementFiltered
+        );
+      }
 
-  async createImageFromBlob(image: Blob) {
-    let reader = await new FileReader();
+    if (this.genderFiltered != 'Genre') {
+      this.userToDisplay = this.userToDisplay.filter(
+        (user) => user.gender_user.gender === this.genderFiltered
+      );
+    }
+    
+    //Si tous les filtres sont remis à valeur initiale
+    if (
+      this.categoriesFiltered.length === 0 &&
+      this.departementFiltered === 0 &&
+      this.genderFiltered == 'Genre'
+      ) {
+        this.userToDisplay = [...this.allUsers];
+        // console.log('courante', this.currentUser);
+      }
+    }
+    
+    async createImageFromBlob(image: Blob) {
+      let reader = await new FileReader();
     reader.readAsDataURL(image);
     reader.addEventListener('load', () => {
       this.imageToShow = reader.result;

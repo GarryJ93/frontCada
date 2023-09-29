@@ -11,13 +11,18 @@ export class FilterBarComponent {
   @Input() genderUser!: GenderUser[];
 
   @Output() categCheckedEvent = new EventEmitter<string[]>();
+  @Output() departementCheckedEvent = new EventEmitter<number>();
+  @Output() genderCheckedEvent = new EventEmitter<string>();
   @Output() onCheckDptEvent = new EventEmitter<number>();
   categoriesChecked: string[] = [];
+  departementSelected!: number;
+  genderSelected!: string;
+
+  //Filtre Espèces
   @Output() onCheckGenderEvent = new EventEmitter<string>();
 
   onCheckCategory(e: Event) {
     const target = e.target as HTMLInputElement;
-    console.log('gender', this.genderUser);
 
     if (target.checked) {
       this.categoriesChecked.push(target.value);
@@ -28,25 +33,28 @@ export class FilterBarComponent {
         this.categoriesChecked.splice(index, 1);
       }
     }
-    console.log('cat checkes', this.categoriesChecked);
     this.categCheckedEvent.emit(this.categoriesChecked);
   }
 
-  onCheckDpt(e: Event) {
-    const target = e.target as HTMLSelectElement;
-    const departementValue: number = Number(target.value);
+  //Filtre Départements
 
-    // console.log("coucou",target.value);
-    this.onCheckDptEvent.emit(departementValue);
+  onCheckDpt(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.departementSelected = parseInt(target.value);
+    this.departementCheckedEvent.emit(this.departementSelected);
   }
+
+  //Filtre Genres
 
   onCheckGender(e: Event) {
-    const target = e.target as HTMLSelectElement;
-    const genderValue = target.value;
-    this.onCheckGenderEvent.emit(genderValue);
-
-    // console.log(genderValue);
+    const target = e.target as HTMLInputElement;
+    this.genderSelected = target.value;
+    this.genderCheckedEvent.emit(this.genderSelected);
   }
+
+
+
+ 
 }
 
 

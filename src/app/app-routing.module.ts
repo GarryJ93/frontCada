@@ -8,6 +8,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MessageComponent } from './pages/message/message.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { AddNewAnimalComponent } from './pages/add-new-animal/add-new-animal.component';
+
 import { authGuard } from './auth.guard';
 import { connectedGuard } from './connected.guard';
 
@@ -21,7 +23,10 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent, canActivate: [connectedGuard] },
   { path: 'login', component: LoginComponent, canActivate: [connectedGuard] },
   { path: 'consultation/:id', component: ConsultationComponent, canActivate: [authGuard] },
-  {path: '**', component: Page404Component}];
+  {path: 'addNewAnimal', component: AddNewAnimalComponent},
+  {path: '**', component: Page404Component}
+  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
