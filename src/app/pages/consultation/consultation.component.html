@@ -3,7 +3,7 @@
 <div class="d-flex flex-column p-4 page card shadow ">
   <div class="d-flex justify-content-between card-body">
     <a  class="back" routerLink="/accueil/{{currentUser.id_user}}">&#x2190; Retour</a>
-    <button class="btn contact shadow">Contacter</button>
+    <button class="btn contact shadow" (click)="openChatModal()" >Contacter</button>
   </div>
   <div class="d-flex">
     <img *ngIf="currentUser.photo" src="{{userImage}}" alt="" width="400px" class="shadow me-5" />

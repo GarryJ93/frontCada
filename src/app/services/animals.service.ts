@@ -19,9 +19,9 @@ export class AnimalsService {
     return this.http.get<Animals>(`http://localhost:3000/api/animals/${id}`);
   }
 
-  getAnimalByUserId(): Observable<Animals> {
-    return this.http.get<Animals>(`http://localhost:3000/api/animals/animal`);
-  }
+  // getAnimalByUserId(): Observable<Animals> {
+  //   return this.http.get<Animals>(`http://localhost:3000/api/animals/animal`);
+  // }
   addAnimals(Animals: Animals): Observable<Animals> {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('access_token'),
@@ -49,5 +49,9 @@ export class AnimalsService {
     return this.http.delete(`http://localhost:3000/api/animals/${id}`, {
       headers: headers,
     });
+  }
+
+    getAnimalByUserId(id: number): Observable<Animals> {
+        return this.http.get<Animals>(`http://localhost:3000/api/animals/user/${id}`);
   }
 }

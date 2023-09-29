@@ -21,7 +21,7 @@ export class UsersService {
 
   login(username: string, password: string) {
     return this.http
-      .post<{ access_token: string; user_id: string }>(
+      .post<{ access_token: string; user_id: string; username:string }>(
         'http://localhost:3000/api/auth/login',
         { username, password }
       )
@@ -34,10 +34,11 @@ export class UsersService {
           );
 
           localStorage.setItem('access_token', response.access_token);
+            localStorage.setItem('username', response.username);
 
           if (response.user_id && Number.isFinite(response.user_id)) {
             localStorage.setItem('user_id', response.user_id);
-
+            
             console.log(
               'Id utilisateur stocké:',
               localStorage.getItem('user_id')

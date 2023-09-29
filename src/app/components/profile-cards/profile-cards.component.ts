@@ -22,31 +22,32 @@ export class ProfileCardsComponent {
   constructor(
     private route: ActivatedRoute,
     private photoService: PhotosService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const myUserIdPhoto = this.myUser.id_photo;
-      this.photoService.getImageById(myUserIdPhoto).subscribe({
-        next: (data: Blob) => {
-          this.currentImage = data;
-          this.createImageFromBlob(this.currentImage);
-        },
-      });
-    
+    this.photoService.getImageById(myUserIdPhoto).subscribe({
+      next: (data: Blob) => {
+        this.currentImage = data;
+        this.createImageFromBlob(this.currentImage);
+      },
+    });
+
     if (this.myUser.animal) {
-    for (let animal of this.myUser.animal) {
-      const animalIdPhoto = animal.id_photo;
-      console.log('id animal: ', animalIdPhoto);
-      this.photoService.getImageById(animalIdPhoto).subscribe({
-        next: (data: Blob) => {
-          this.animalCurrentImage = data;
-          this.createAnimalImageFromBlob(
-            this.animalCurrentImage,
-            animal.id_animals
-          );
-        },
-      });
-    }}
+      for (let animal of this.myUser.animal) {
+        const animalIdPhoto = animal.id_photo;
+        console.log('id animal: ', animalIdPhoto);
+        this.photoService.getImageById(animalIdPhoto).subscribe({
+          next: (data: Blob) => {
+            this.animalCurrentImage = data;
+            this.createAnimalImageFromBlob(
+              this.animalCurrentImage,
+              animal.id_animals
+            );
+          },
+        });
+      }
+    }
   }
 
   createImageFromBlob(image: Blob) {
@@ -67,7 +68,7 @@ export class ProfileCardsComponent {
     reader.addEventListener('load', () => {
       if (currentAnimal)
         currentAnimal.picture = reader.result;
-      
+
     });
   }
   ngAfterViewInit() {
