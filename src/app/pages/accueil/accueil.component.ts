@@ -19,29 +19,27 @@ export class AccueilComponent {
   allUsers: Users[] = [];
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
-  userDepartement!: Number[];
-  genderUsers!: GenderUser[];
-  categoriesFiltered: string[] = [];
-  departementFiltered!: number;
-  genderFiltered!: string;
-  photosToDisplay!: Photos[];
-  allPhotos: Photos[] = [];
   isImageLoading!: Boolean;
   imageToShow!: any;
-  
+  categoriesFiltered: string[] = [];
+  userDepartement!: number[];
+  genderUsers!: GenderUser[];
+  departementFiltered: number | undefined;
+  departementSelected!: number;
+  genderFiltered: string | undefined;
+
   constructor(
     private usersService: UsersService,
-    
+
     private photoService: PhotosService,
-    
+
     private animalsService: AnimalsService,
-    
+
     private genderService: GenderUserService
-    ) {}
-    
-    currentUserId = this.usersService.getUserConnected()!;
-    ngOnInit() {
-      this.usersService.getAllUsers().subscribe({
+  ) {}
+
+  ngOnInit() {
+    this.usersService.getAllUsers().subscribe({
       next: (response) => {
         {
           this.allUsers = [...response];
@@ -51,13 +49,7 @@ export class AccueilComponent {
           ];
         }
       },
-    });
-
-    this.usersService.getUserById(this.currentUserId).subscribe({
-      next: (response) => {
-        this.currentUser = response;
-      },
-    });
+    });  
     
     
     this.animalsService.getAllAnimals().subscribe({
@@ -68,14 +60,14 @@ export class AccueilComponent {
         }
       },
     });
-    
+
     this.genderService.getGenderUsers().subscribe({
       next: (response) => {
         this.genderUsers = [...response];
       },
     });
   }
-  
+
   categoriesReceived(categoriesSelected: string[]) {
     this.categoriesFiltered = categoriesSelected;
     this.letsFilter();
@@ -90,7 +82,9 @@ export class AccueilComponent {
     this.genderFiltered = genderSelected;
     this.letsFilter();
   }
-  
+
+ 
+
   letsFilter() {
     this.userToDisplay = [...this.allUsers];
     

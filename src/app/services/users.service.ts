@@ -54,7 +54,11 @@ export class UsersService {
     );
   }
 
-  modifyUsers(id: number, updateData: Users): Observable<Users> {
+  modifyUsers(id: number, updateData: Partial<Users>): Observable<Partial<Users>> {
+    // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
+    // enlever la propriété animals de l'objet updateData
+    delete updateData.animal;
+    console.log("mon teste", updateData);
     return this.http.patch<Users>(
       `http://localhost:3000/api/users/${id}`,
       updateData

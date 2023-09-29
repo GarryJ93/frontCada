@@ -7,18 +7,19 @@ import { GenderUser } from 'src/app/models/gender-users';
   styleUrls: ['./filter-bar.component.css'],
 })
 export class FilterBarComponent {
-  @Input() userDpt!: Number[];
+  @Input() userDpt!: number[];
   @Input() genderUser!: GenderUser[];
 
   @Output() categCheckedEvent = new EventEmitter<string[]>();
   @Output() departementCheckedEvent = new EventEmitter<number>();
   @Output() genderCheckedEvent = new EventEmitter<string>();
-
+  @Output() onCheckDptEvent = new EventEmitter<number>();
   categoriesChecked: string[] = [];
   departementSelected!: number;
   genderSelected!: string;
 
   //Filtre Espèces
+  @Output() onCheckGenderEvent = new EventEmitter<string>();
 
   onCheckCategory(e: Event) {
     const target = e.target as HTMLInputElement;
@@ -50,4 +51,22 @@ export class FilterBarComponent {
     this.genderSelected = target.value;
     this.genderCheckedEvent.emit(this.genderSelected);
   }
+
+  onCheckDpt(e: Event) {
+    const target = e.target as HTMLSelectElement;
+    const departementValue: number = Number(target.value);
+
+    // console.log("coucou",target.value);
+    this.onCheckDptEvent.emit(departementValue);
+  }
+
+  onCheckGender(e: Event) {
+    const target = e.target as HTMLSelectElement;
+    const genderValue = target.value;
+    this.onCheckGenderEvent.emit(genderValue);
+
+    // console.log(genderValue);
+  }
 }
+
+

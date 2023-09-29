@@ -54,3 +54,28 @@
 .radius-20{
     border-radius: 20px;
 } */
+.btn-update {
+	background-color: #643E2B;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+}
+
+.btn-delete {
+	background-color: #ee510e;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+}
+
+.btn-next {
+	background-color: #643E2B;
+    color: white;
+    border-radius: 20px; 
+    border: none;
+	text-align: center;
+}
+
+img {
+	max-width: 50%;
+}
