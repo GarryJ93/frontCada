@@ -43,13 +43,13 @@ export class PhotosService {
   //   return this.http.get<Photos>(`http://localhost:3000/api/photos/${id}`);
   // }
 
-  modifyPhotos(id: number, updateData: Photos): Observable<Photos> {
-    // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
-    return this.http.patch<Photos>(
-      `http://localhost:3000/api/photos/${id}`,
-      updateData
-    );
-  }
+  // modifyPhotos(id: number, updateData: FormData) {
+  //   // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
+  //   return this.http.patch(
+  //     `http://localhost:3000/api/photos/${id}`,
+  //     updateData
+  //   );
+  // }
 
   deletePhotos(id: number) {
     const headers = new HttpHeaders({

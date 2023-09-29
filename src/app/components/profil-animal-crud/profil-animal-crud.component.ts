@@ -18,9 +18,11 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ProfilAnimalCrudComponent implements OnChanges {
   @Input() animalsProfil!: Animals[];
+  @Input() animalProfilePicture!: any;
   isEditing = false;
   currentAnimalIndex = 0;
   numberOfAnimals!: number;
+  
 
   constructor(private animalsService: AnimalsService,
     private router: Router) {}
@@ -31,9 +33,22 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     console.log(this.animalsProfil[i].id_animals);
 
     if (!this.isEditing) {
+      const updateAnimal = {
+        name: this.animalsProfil[i].name,
+        age: this.animalsProfil[i].age,
+      }
       this.animalsService
-        .modifyAnimals(this.animalsProfil[i].id_animals, this.animalsProfil[i])
-        .subscribe({});
+        .modifyAnimals(this.animalsProfil[i].id_animals, updateAnimal)
+        .subscribe({
+          next: (response) => {
+            console.log('animal mis à jour', response)
+
+          },
+          error: (error) => {
+            console.error('Erreur lors de la mise à jour', error)
+          }
+
+        });
     }
   }
 

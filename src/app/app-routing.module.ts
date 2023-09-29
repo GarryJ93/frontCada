@@ -10,17 +10,19 @@ import { MessageComponent } from './pages/message/message.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
 import { AddNewAnimalComponent } from './pages/add-new-animal/add-new-animal.component';
 
+import { authGuard } from './auth.guard';
+import { connectedGuard } from './connected.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: "full"},
-  {path: 'accueil', component: AccueilComponent },
-  {path: 'accueil/:id', component: AccueilComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'message', component: MessageComponent},
-  {path: 'profil', component: ProfileComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'login', component: LoginComponent },
-  {path: 'consultation/:id', component: ConsultationComponent},
+  { path: '', redirectTo: 'home', pathMatch: "full" },
+  {path: 'accueil', component: AccueilComponent, canActivate:[authGuard] },
+  { path: 'accueil/:id', component: AccueilComponent, canActivate: [authGuard] },
+  {path: 'home', component: HomeComponent, canActivate:[connectedGuard]},
+  { path: 'message', component: MessageComponent, canActivate: [authGuard] },
+  { path: 'profil', component: ProfileComponent, canActivate: [authGuard] },
+  { path: 'signin', component: SigninComponent, canActivate: [connectedGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [connectedGuard] },
+  { path: 'consultation/:id', component: ConsultationComponent, canActivate: [authGuard] },
   {path: 'addNewAnimal', component: AddNewAnimalComponent},
   {path: '**', component: Page404Component}
   

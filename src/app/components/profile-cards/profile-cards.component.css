@@ -4,27 +4,35 @@ img {
 }
 
 .card-body {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
   margin-top: 30px;
 }
 
-.information-block {
+/* .information-block {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
+} */
 
-#top{
+/* #top{
 display: flex;
 justify-content: space-between;
-}
+} */
 
 
 
 .user-name {
   font-size: x-large;
+}
+
+.see-profile {
+background-color: #ee510e;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+    height: 25%;
 }
 
 
