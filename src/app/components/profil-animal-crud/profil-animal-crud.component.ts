@@ -52,7 +52,7 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     }
   }
 
-  deleteMyAniaml(i:number){
+  deleteMyAnimal(i:number){
     this.animalsService.deleteAnimals(this.animalsProfil[i].id_animals).subscribe({});
     location.reload()
     console.log("mon animal ",this.animalsProfil[i].id_animals);
