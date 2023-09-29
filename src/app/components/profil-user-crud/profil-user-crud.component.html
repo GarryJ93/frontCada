@@ -1,153 +1,153 @@
 <div class="card page shadow m-4 p-4">
-  <div class="d-flex flex-row justify-content-between m-4">
-    <h3>Votre Profil</h3>
-    <div>
-      <button class="btn btn-update m-2 shadow" (click)="toggleEdit()">
-        {{ isEditing ? "Sauvegarder" : "Modifier" }}
-      </button>
-      <button class="btn btn-delete m-2 shadow">Supprimer</button>
+    <div class="d-flex flex-row justify-content-between m-4">
+      <h3>Votre Profil</h3>
+      <div>
+        <button class="btn btn-update m-2 shadow" (click)="toggleEdit()">
+          {{ isEditing ? "Sauvegarder" : "Modifier" }}
+        </button>
+        <button (click)="deleteMyAccount()" class="btn btn-delete m-2 shadow">Supprimer</button>
+      </div>
     </div>
-  </div>
-  <div class="top d-flex justify-content-evenly">
-    <div class="d-flex flex-column align-items-center">
-    <img src="{{ profileImage }}" alt="" height="400px" class="rounded img-fluid"/>
-  
-  </div>
-    <div>
-      <div *ngIf="!isEditing && RecupUserProfil">
-        Pseudo: {{ RecupUserProfil.username }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="username">Pseudo: </label>
-      <input
-        
-        id="username"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.username"
-        placeholder="{{ RecupUserProfil.username }}"
-      /></div>
-
-      <div *ngIf="!isEditing && RecupUserProfil">
-        Prénom: {{ RecupUserProfil.firstname }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="name">Prénom: </label>
-      <input
-        
-        id="name"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.firstname"
-        placeholder="{{ RecupUserProfil.firstname }}"
-      /></div>
-
-      <div *ngIf="!isEditing && RecupUserProfil">
-        E-mail: {{ RecupUserProfil.email }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="email">E-mail: </label>
-      <input
-        
-        id="email"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.email"
-        placeholder="{{ RecupUserProfil.email }}"
-      /></div>
-
-      <div *ngIf="!isEditing && RecupUserProfil">
-        Ville: {{ RecupUserProfil.city }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="city">Ville: </label>
-      <input
-        
-        id="city"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.city"
-        placeholder="{{ RecupUserProfil.city }}"
-      /></div>
-
-      <div *ngIf="!isEditing && RecupUserProfil">
-        Département: {{ RecupUserProfil.departement }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="department">Département: </label>
-      <input
-        
-        id="department"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.departement"
-        placeholder="{{ RecupUserProfil.departement }}"
-      /></div>
-
-      <div *ngIf="!isEditing && RecupUserProfil">
-        Description: {{ RecupUserProfil.description }}
-      </div>
-      <div *ngIf="isEditing">
-      <label for="description">Description: </label>
-      <textarea
-        cols="30"
-        row="3"
-        id="description"
-        class="form-control m-2"
-        [(ngModel)]="RecupUserProfil.description"
-        placeholder="{{ RecupUserProfil.description }}"
-      ></textarea>
-    </div></div>
-  </div>
-  <app-profil-animal-crud class="m-4"
-    [animalsProfil]="animalsUserProfil" [animalProfilePicture]="animalPicture"
-  ></app-profil-animal-crud>
-</div>
-
-<!-- <div class="container d-flex justify-content-center mt-2">
-    <div class="card w-100">
-        <div class="d-flex flex-row">
-            <div>
-                <img src="https://img.freepik.com/premium-photo/man-have-long-beard-nice-hairstyle-wearing-trendy-high-quality-suit_758367-9588.jpg?w=360" class="img-fluid profile-image shadow mytext"  width="300px" >
-            </div>
-            <div class="group-descrip input-group mb-6 d-flex align-items-end flex-column">
-                <span class="input-group-text shadow mytext w-100" id="inputGroup-sizing-default">Description</span>
-                <textarea formControlName="description" class="form-control m-2 shadow mytext w-100" rows="3" id="inputDescription"></textarea>
-            </div>
+    <div class="top d-flex justify-content-evenly">
+      <div class="d-flex flex-column align-items-center">
+      <img src="{{ profileImage }}" alt="" height="400px" class="rounded img-fluid"/>
+    
+    </div>
+      <div>
+        <div *ngIf="!isEditing && RecupUserProfil">
+          Pseudo: {{ RecupUserProfil.username }}
         </div>
-        <form [formGroup]="formProfilUser" (ngSubmit)="onSubmit()" class="formcontainer">
-            <div class="group-id d-flex justify-content-start align-items-start flex-wrap ">
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Sexe</span>
-                    <input formControlName="gender_user" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.id_gender_user}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Pseudo</span>
-                    <input formControlName="username" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.username}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Prénom</span>
-                    <input formControlName="firstname" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.firstname}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Ville</span>
-                    <input formControlName="city" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.city}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Département</span>
-                    <input formControlName="departement" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.departement}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">E-mail</span>
-                    <input formControlName="email" type="email" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.email}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Mot de passe</span>
-                    <input formControlName="password" type="password" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.password}} ">
-                </div>
-                <div class="input-group mb-3 col-xs-2">
-                    <input formControlName="photo" type="file" class="form-control m-2 shadow " id="inputPhoto" >
-                </div>
-            </div>
-            <div class="d-flex flex-row justify-content-end text-right mr-2">
-                <button type="submit" class="btn btn-warning">Modifier</button>
-                <button type="submit" class="btn btn-danger">Supprimer</button>
-            </div>
-        </form>
+        <div *ngIf="isEditing">
+        <label for="username">Pseudo: </label>
+        <input
+          
+          id="username"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.username"
+          placeholder="{{ RecupUserProfil.username }}"
+        /></div>
+  
+        <div *ngIf="!isEditing && RecupUserProfil">
+          Prénom: {{ RecupUserProfil.firstname }}
+        </div>
+        <div *ngIf="isEditing">
+        <label for="name">Prénom: </label>
+        <input
+          
+          id="name"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.firstname"
+          placeholder="{{ RecupUserProfil.firstname }}"
+        /></div>
+  
+        <div *ngIf="!isEditing && RecupUserProfil">
+          E-mail: {{ RecupUserProfil.email }}
+        </div>
+        <div *ngIf="isEditing">
+        <label for="email">E-mail: </label>
+        <input
+          
+          id="email"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.email"
+          placeholder="{{ RecupUserProfil.email }}"
+        /></div>
+  
+        <div *ngIf="!isEditing && RecupUserProfil">
+          Ville: {{ RecupUserProfil.city }}
+        </div>
+        <div *ngIf="isEditing">
+        <label for="city">Ville: </label>
+        <input
+          
+          id="city"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.city"
+          placeholder="{{ RecupUserProfil.city }}"
+        /></div>
+  
+        <div *ngIf="!isEditing && RecupUserProfil">
+          Département: {{ RecupUserProfil.departement }}
+        </div>
+        <div *ngIf="isEditing">
+        <label for="department">Département: </label>
+        <input
+          
+          id="department"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.departement"
+          placeholder="{{ RecupUserProfil.departement }}"
+        /></div>
+  
+        <div *ngIf="!isEditing && RecupUserProfil">
+          Description: {{ RecupUserProfil.description }}
+        </div>
+        <div *ngIf="isEditing">
+        <label for="description">Description: </label>
+        <textarea
+          cols="30"
+          row="3"
+          id="description"
+          class="form-control m-2"
+          [(ngModel)]="RecupUserProfil.description"
+          placeholder="{{ RecupUserProfil.description }}"
+        ></textarea>
+      </div></div>
     </div>
-</div> -->
+    <app-profil-animal-crud class="m-4"
+      [animalsProfil]="animalsUserProfil" [animalProfilePicture]="animalPicture"
+    ></app-profil-animal-crud>
+  </div>
+  
+  <!-- <div class="container d-flex justify-content-center mt-2">
+      <div class="card w-100">
+          <div class="d-flex flex-row">
+              <div>
+                  <img src="https://img.freepik.com/premium-photo/man-have-long-beard-nice-hairstyle-wearing-trendy-high-quality-suit_758367-9588.jpg?w=360" class="img-fluid profile-image shadow mytext"  width="300px" >
+              </div>
+              <div class="group-descrip input-group mb-6 d-flex align-items-end flex-column">
+                  <span class="input-group-text shadow mytext w-100" id="inputGroup-sizing-default">Description</span>
+                  <textarea formControlName="description" class="form-control m-2 shadow mytext w-100" rows="3" id="inputDescription"></textarea>
+              </div>
+          </div>
+          <form [formGroup]="formProfilUser" (ngSubmit)="onSubmit()" class="formcontainer">
+              <div class="group-id d-flex justify-content-start align-items-start flex-wrap ">
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Sexe</span>
+                      <input formControlName="gender_user" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.id_gender_user}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Pseudo</span>
+                      <input formControlName="username" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.username}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Prénom</span>
+                      <input formControlName="firstname" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.firstname}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Ville</span>
+                      <input formControlName="city" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.city}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Département</span>
+                      <input formControlName="departement" type="text" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.departement}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">E-mail</span>
+                      <input formControlName="email" type="email" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.email}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <span class="input-group-text shadow mytext" id="inputGroup-sizing-default">Mot de passe</span>
+                      <input formControlName="password" type="password" class="form-control m-2 shadow mytext" placeholder="{{RecupUserProfil.password}} ">
+                  </div>
+                  <div class="input-group mb-3 col-xs-2">
+                      <input formControlName="photo" type="file" class="form-control m-2 shadow " id="inputPhoto" >
+                  </div>
+              </div>
+              <div class="d-flex flex-row justify-content-end text-right mr-2">
+                  <button type="submit" class="btn btn-warning">Modifier</button>
+                  <button type="submit" class="btn btn-danger">Supprimer</button>
+              </div>
+          </form>
+      </div>
+  </div> -->
