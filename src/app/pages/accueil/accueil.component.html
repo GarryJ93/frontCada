@@ -3,21 +3,14 @@
 <app-filter-bar
  
   (categCheckedEvent)="categoriesReceived($event)"
-  (departementCheckedEvent)="departementReceived($event)"
+   (departementCheckedEvent)="departementReceived($event)"
   (genderCheckedEvent)="genderReceived($event)"
  
  [genderUser]="genderUsers"
-(onCheckDptEvent)="departementReceived($event)"
+  (onCheckDptEvent)="departementReceived($event)"
   [userDpt]="userDepartement"
  
   (onCheckGenderEvent)="genderReceived($event)"
-
-
-
-
-
-
-
 ></app-filter-bar>
 
 <app-profile-list [recupUsers]="userToDisplay" class="m-5"></app-profile-list>

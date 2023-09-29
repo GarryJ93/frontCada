@@ -50,20 +50,24 @@ export class ProfilUserCrudComponent implements OnChanges {
       this.userService
         .modifyUsers(this.RecupUserProfil.id_user, this.RecupUserProfil)
         .subscribe({});
-      
     }
   }
 
-  deleteMyAccount(){
+  deleteMyAccount() {
     this.userService.deleteUsers(this.RecupUserProfil.id_user).subscribe({
       next: (response) => {
-        alert('vous avez bien supprimé votre compte')
-        localStorage.clear()
-        this.router.navigate(['/home'])
-      }, error:(error) => {
-        console.error('erreur lors de la suppression',error)
-      }
+        alert('vous avez bien supprimé votre compte');
+        localStorage.clear();
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.error('erreur lors de la suppression', error);
+      },
     });
-    console.log("user supprimé",this.RecupUserProfil.id_user)
+    console.log('user supprimé', this.RecupUserProfil.id_user);
+  }
+
+  goPageAddAnimal() {
+    this.router.navigate(['/addNewAnimal']);
   }
 }
