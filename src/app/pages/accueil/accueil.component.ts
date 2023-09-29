@@ -23,19 +23,22 @@ export class AccueilComponent {
   animalsToDisplay!: Animals[];
   allAnimals: Animals[] = [];
   isImageLoading!: Boolean;
-  imageToShow!: any;categoriesFiltered: string[] = [];
-  userDepartement!: Number[];
+  imageToShow!: any;
+  categoriesFiltered: string[] = [];
+  userDepartement!: number[];
   genderUsers!: GenderUser[];
+  departementFiltered: number | undefined;
+  departementSelected!: number;
+  genderFiltered: string | undefined;
 
   constructor(
-    
     private usersService: UsersService,
-   
+
     private photoService: PhotosService,
-   
+
     private animalsService: AnimalsService,
 
-    private genderService: GenderUserService,
+    private genderService: GenderUserService
   ) {}
 
   ngOnInit() {
@@ -44,11 +47,13 @@ export class AccueilComponent {
         {
           this.allUsers = [...response];
           this.userToDisplay = [...response];
-          this.userDepartement = [...new Set(this.userToDisplay.map((user)=>user.departement))]
+          this.userDepartement = [
+            ...new Set(this.userToDisplay.map((user) => user.departement)),
+          ];
         }
       },
     });
-   
+
     this.animalsService.getAllAnimals().subscribe({
       next: (response) => {
         {
@@ -58,17 +63,14 @@ export class AccueilComponent {
         console.log(this.allAnimals);
       },
     });
-    
-    this.genderService.getGenderUsers().subscribe({
-      next:(response)=>{
-        this.genderUsers = [...response]
-      }
-    })
-  
 
-  
+    this.genderService.getGenderUsers().subscribe({
+      next: (response) => {
+        this.genderUsers = [...response];
+      },
+    });
   }
-  
+
   categoriesReceived(categoriesSelected: string[]) {
     this.categoriesFiltered = categoriesSelected;
     console.log('cat dans accueil', this.categoriesFiltered);
@@ -79,11 +81,34 @@ export class AccueilComponent {
     // console.log(this.userToDisplay);
     this.letsFilter();
   }
+  departementReceived(departement: number)
+
+  {
+this.departementFiltered = departement;
+
+    console.log(departement,"ok");
+
+
+    // ajouter la logique de filtre pour :
+    // filtrer la liste (this.userToDisplay)
+    // fonction du departement récuperer en paramètre
+    // réassigner le resultat du filtre dans (this.userToDisplay)
+  }
+  genderReceived(gender : string)
+{
+
+  this.genderFiltered = this.genderFiltered;
+
+
+  console.log("coucou",gender);
+ this.letsFilter();
+}
 
   letsFilter() {
     this.userToDisplay = [...this.allUsers];
     this.userToDisplay = this.userToDisplay.filter((user) =>
       this.categoriesFiltered.includes(user.animal[0].breed.species.species)
+     
       
     );console.log(this.userToDisplay);
     if (this.categoriesFiltered.length === 0) {
@@ -97,7 +122,7 @@ export class AccueilComponent {
     reader.readAsDataURL(image);
     reader.addEventListener('load', () => {
       this.imageToShow = reader.result;
-    })
+    });
   }
   getImageFromService() {
     this.isImageLoading = true;
@@ -112,10 +137,4 @@ export class AccueilComponent {
       },
     });
   }
-
- 
-
 }
-
-    
-
