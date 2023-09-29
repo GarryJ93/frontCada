@@ -8,15 +8,25 @@ import { Observable } from 'rxjs';
 })
 export class BreedService {
   breed: Breed[] = [];
+  
+
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('access_token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+    return headers;
+  }
 
   constructor(private http: HttpClient) {}
 
   getBreed(): Observable<Breed[]> {
-    return this.http.get<Breed[]>('http://localhost:3000/api/breed');
+    return this.http.get<Breed[]>('http://localhost:3000/api/breed', { headers: this.getHeaders() });
   }
 
   getBreedById(id: number): Observable<Breed> {
-    return this.http.get<Breed>(`http://localhost:3000/api/breed/${id}`);
+    return this.http.get<Breed>(`http://localhost:3000/api/breed/${id}`, { headers: this.getHeaders() });
   }
 
   addBreed(breed: Breed): Observable<Breed> {

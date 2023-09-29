@@ -10,13 +10,22 @@ export class UsersService {
   users: Users[] = [];
 
   constructor(private http: HttpClient) {}
+  
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('access_token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+    return headers;
+  }
 
   getAllUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>('http://localhost:3000/api/users');
+    return this.http.get<Users[]>('http://localhost:3000/api/users', {headers: this.getHeaders()});
   }
 
   getUserById(id: number): Observable<Users> {
-    return this.http.get<Users>(`http://localhost:3000/api/users/${id}`);
+    return this.http.get<Users>(`http://localhost:3000/api/users/${id}`, { headers: this.getHeaders() });
   }
 
   login(username: string, password: string) {
@@ -61,7 +70,7 @@ export class UsersService {
     console.log("mon teste", updateData);
     return this.http.patch<Users>(
       `http://localhost:3000/api/users/${id}`,
-      updateData
+      updateData, { headers: this.getHeaders() }
     );
   }
 

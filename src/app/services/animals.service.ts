@@ -9,14 +9,24 @@ import { Observable } from 'rxjs';
 export class AnimalsService {
   animals: Animals[] = [];
 
+
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('access_token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+    return headers;
+  }
+
   constructor(private http: HttpClient) {}
 
   getAllAnimals(): Observable<Animals[]> {
-    return this.http.get<Animals[]>('http://localhost:3000/api/animals');
+    return this.http.get<Animals[]>('http://localhost:3000/api/animals', {headers: this.getHeaders()});
   }
 
   getAnimalById(id: number): Observable<Animals> {
-    return this.http.get<Animals>(`http://localhost:3000/api/animals/${id}`);
+    return this.http.get<Animals>(`http://localhost:3000/api/animals/${id}`, { headers: this.getHeaders() });
   }
 
   // getAnimalByUserId(): Observable<Animals> {
@@ -38,7 +48,7 @@ export class AnimalsService {
     delete updateData.photo
     return this.http.patch<Animals>(
       `http://localhost:3000/api/animals/${id}`,
-      updateData
+      updateData, { headers: this.getHeaders() }
     );
   }
 
