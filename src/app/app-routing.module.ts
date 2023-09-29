@@ -8,17 +8,18 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MessageComponent } from './pages/message/message.component';
 import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: "full"},
-  {path: 'accueil', component: AccueilComponent },
-  {path: 'accueil/:id', component: AccueilComponent},
+  {path: 'accueil', component: AccueilComponent, canActivate:[authGuard] },
+  { path: 'accueil/:id', component: AccueilComponent, canActivate: [authGuard] },
   {path: 'home', component: HomeComponent},
-  {path: 'message', component: MessageComponent},
-  {path: 'profil', component: ProfileComponent},
+  { path: 'message', component: MessageComponent, canActivate: [authGuard] },
+  { path: 'profil', component: ProfileComponent, canActivate: [authGuard] },
   {path: 'signin', component: SigninComponent},
   {path: 'login', component: LoginComponent },
-  {path: 'consultation/:id', component: ConsultationComponent},
+  { path: 'consultation/:id', component: ConsultationComponent, canActivate: [authGuard] },
   {path: '**', component: Page404Component}];
 
 @NgModule({

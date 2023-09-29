@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
   private bddURL = 'http://localhost:3000/api/auth';
 
+  isConnected: boolean = false;
+
   constructor(private http: HttpClient) {}
   login(username: string, password: string): Observable<Connexion> {
     const body = { username: username, password: password };
@@ -19,5 +21,10 @@ export class LoginService {
     //   (this.bddURL + '/login')
     // );
     return this.http.post<Connexion>(this.bddURL + '/login', body);
+  }
+
+  checkConnexion(): boolean{
+    this.isConnected = !!localStorage.getItem('access_token');
+    return this.isConnected;
   }
 }
