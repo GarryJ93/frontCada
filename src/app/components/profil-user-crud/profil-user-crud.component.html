@@ -2,7 +2,7 @@
   <div class="d-flex flex-row justify-content-between m-4">
     <h3>Votre Profil</h3>
     <div>
-      <button class="btn btn-update m-2 shadow">Ajouter un animal</button>
+      <button class="btn btn-update m-2 shadow" (click)="goPageAddAnimal()">Ajouter un animal</button>
       <button class="btn btn-update m-2 shadow" (click)="toggleEdit()">
         {{ isEditing ? "Sauvegarder" : "Modifier" }}
       </button>

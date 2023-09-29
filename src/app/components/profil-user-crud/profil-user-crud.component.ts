@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Router } from 'express';
 import { Animals } from 'src/app/models/animals';
 import { Photos } from 'src/app/models/photos';
 import { Users } from 'src/app/models/users';
@@ -22,7 +29,8 @@ export class ProfilUserCrudComponent {
 
   constructor(
     private userService: UsersService,
-    private photoService: PhotosService
+    private photoService: PhotosService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -46,5 +54,7 @@ export class ProfilUserCrudComponent {
     }
   }
 
-  
+  goPageAddAnimal() {
+    // this.router.navigate(['/addNewAnimal']);
+  }
 }

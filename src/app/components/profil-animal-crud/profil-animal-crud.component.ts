@@ -52,9 +52,7 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     }
   }
 
-  goPageAddAnimal(){
-    this.router.navigate(['/addNewAnimal'])
-  };
+  
 
   ngOnChanges() {
     // Variable pour le modulo des fonctions next & previous
