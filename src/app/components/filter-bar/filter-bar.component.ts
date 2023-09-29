@@ -52,21 +52,9 @@ export class FilterBarComponent {
     this.genderCheckedEvent.emit(this.genderSelected);
   }
 
-  onCheckDpt(e: Event) {
-    const target = e.target as HTMLSelectElement;
-    const departementValue: number = Number(target.value);
 
-    // console.log("coucou",target.value);
-    this.onCheckDptEvent.emit(departementValue);
-  }
 
-  onCheckGender(e: Event) {
-    const target = e.target as HTMLSelectElement;
-    const genderValue = target.value;
-    this.onCheckGenderEvent.emit(genderValue);
-
-    // console.log(genderValue);
-  }
+ 
 }
 
 
