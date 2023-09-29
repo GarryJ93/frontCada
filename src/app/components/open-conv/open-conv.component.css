@@ -1,0 +1,26 @@
+button{
+    background-color: #c93c20a8;
+    border: none;
+    color:white;
+    border-radius: 5px;
+        font-weight: bold;
+}
+
+button:hover{
+    background-color: #C93C20;
+    color:white
+}
+
+button:active{
+    color:#C93C20;
+    font-weight: bold;
+    background-color: white;
+}
+
+div{
+    border-color: #c93c20a8;
+}
+
+.custom-modal-width .modal-dialog {
+    max-width: 90%;
+}

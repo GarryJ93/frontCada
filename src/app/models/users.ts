@@ -1,4 +1,5 @@
 import { Animals } from "./animals"
+import { Messages } from "./messages";
 import { Photos } from "./photos";
 
 export interface Users {
@@ -14,4 +15,6 @@ export interface Users {
     id_gender_user: number;
     animal: Animals[];
     photo: Photos
+    sentMessages: Messages[];
+    receivedMessage: Messages[];
 }

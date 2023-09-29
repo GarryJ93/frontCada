@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Users } from 'src/app/models/users';
 import { UsersService } from 'src/app/services/users.service';
 import { Location } from '@angular/common';
 import { PhotosService } from 'src/app/services/photos.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChatModalComponent } from 'src/app/components/chat-modal/chat-modal.component';
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
@@ -16,16 +18,27 @@ export class ConsultationComponent {
   userImage!: any;
   animalImage!: any;
 
+  showChatModal: boolean = false;
+
+  // users: Users[] = [];
+  // selectedUser!: Users;
+
+
+  // @ViewChild('chatModal') chatModal: any;
+  // @Output() userSelected: EventEmitter<Users> = new EventEmitter<Users>();
+
   constructor(
     private route: ActivatedRoute,
     private userService: UsersService,
     private photoService: PhotosService,
-    private location: Location
+    private location: Location,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
     const routeParam = this.route.snapshot.paramMap;
     const userIdFromRoute = Number(routeParam.get('id'));
+    localStorage.setItem('receiverId', userIdFromRoute.toString());
 
     this.userService.getUserById(userIdFromRoute).subscribe(async (user) => {
       this.currentUser = user;
@@ -70,8 +83,22 @@ export class ConsultationComponent {
       if(currentAnimal) currentAnimal.picture = reader.result;
     });
   }
+
+
+  // onChatModal(user: Users) {
+  //   this.selectedUser = user;
+  //   console.log('selectIUsercote controlleur ', this.selectedUser);
+  //   localStorage.setItem('receiverId', (user.id_user).toString())
+  //   localStorage.setItem('receiverUsername', user.username);
+  //   this.modalService.open(this.chatModal, { size: 'lg' });
+  // }
+
+  openChatModal(){
+    const modalRef = this.modalService.open(ChatModalComponent, { centered: true, size: 'lg', windowClass: 'custom-modal-width' });
+    modalRef.componentInstance.selectedUser = this.currentUser;
+    // localStorage.setItem('receiverUsername:', this.currentUser.firstname);
+    modalRef.componentInstance.usernameFromParent = this.currentUser.username;
+  }
+
 }
 
-// onGoBack() {
-//   this.location.back();
-// }
