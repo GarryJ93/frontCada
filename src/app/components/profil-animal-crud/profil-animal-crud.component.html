@@ -11,7 +11,7 @@
               <button (click)="toggleEdit(i)" class="btn btn-update m-2 shadow">
                 {{ isEditing ? "Sauvegarder" : "Modifier" }}
               </button>
-              <button class="btn btn-delete m-2 shadow">Supprimer</button>
+              <button class="btn btn-delete m-2 shadow" (click)="deleteMyAnimal(i)" >Supprimer</button>
             </div>
           </div>
           <div class="d-flex flex-row m-4">
