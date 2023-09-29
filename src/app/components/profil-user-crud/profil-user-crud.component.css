@@ -47,3 +47,24 @@
 
 }
  */
+.btn-update {
+	background-color: #643E2B;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+}
+
+.btn-delete {
+	background-color: #ee510e;
+    color: white;
+    border-radius: 45px; 
+    border: none;
+}
+
+.page {
+	margin-bottom: 60px;
+}
+
+img {
+	max-width: 50%;
+}

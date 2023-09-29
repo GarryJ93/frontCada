@@ -11,12 +11,16 @@
 #bottom{
 display: flex;
 justify-content: space-between;
+
 }
 
 
 .animalImage{
   position: relative;
   display: flex;
+  height: 75%;
+  width: 75%;
+  margin: auto;
 }
 
 .active {

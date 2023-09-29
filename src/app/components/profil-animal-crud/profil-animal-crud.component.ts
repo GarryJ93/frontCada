@@ -18,9 +18,11 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ProfilAnimalCrudComponent implements OnChanges {
   @Input() animalsProfil!: Animals[];
+  @Input() animalProfilePicture!: any;
   isEditing = false;
   currentAnimalIndex = 0;
   numberOfAnimals!: number;
+  
 
   constructor(private animalsService: AnimalsService) {}
 

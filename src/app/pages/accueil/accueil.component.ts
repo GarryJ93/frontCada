@@ -84,7 +84,8 @@ export class AccueilComponent {
     this.userToDisplay = [...this.allUsers];
     this.userToDisplay = this.userToDisplay.filter((user) =>
       this.categoriesFiltered.includes(user.animal[0].breed.species.species)
-    );
+      
+    );console.log(this.userToDisplay);
     if (this.categoriesFiltered.length === 0) {
       this.userToDisplay = [...this.allUsers];
     }

@@ -1,27 +1,29 @@
 <div
   class="card shadow m-4"
-  style="width: 16rem; height: 23rem"
-  [routerLink]="[('/consultation/'), myUser.id_user]"
+  style="width: 16rem; height: 35rem"
   [id]="myUser.id_user"
 >
   <div class="card-body">
     <div id="top">
+      <div class="d-flex flex-row justify-content-between">
       <img
         *ngIf="myUser.photo"
         class="card-img-top shadow rounded float-start"
         src="{{userImage}}"
       />
+    <button [routerLink]="[('/consultation/'), myUser.id_user]" class="btn see-profile">Voir Profil</button>
+    </div>
       
       <div class="information-block">
         <p class="card-text user-name">{{ myUser.username }}</p>
         <p class="card-text">{{ myUser.city }}</p>
       </div>
     </div>
-  </div>
+  
 
-    <h3>Animal :</h3>
+    <h3 class="mx-2">Animal :</h3>
 
-    <div *ngFor="let animal of myUser.animal" id="bottom">
+    <!-- <div *ngFor="let animal of myUser.animal" id="bottom">
       <div class="information-block">
         <p class="animal-name">{{ animal.name }}</p>
         <p>race : {{ animal.breed.breed }}</p>
@@ -34,8 +36,8 @@
         />
       </div>
     </div>
-  </div>
+  </div> -->
 
-<app-animal-card  [myUser]="myUser"></app-animal-card>
-
+<app-animal-card [myUser]="myUser"></app-animal-card>
+</div>
 
