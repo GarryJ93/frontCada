@@ -18,13 +18,14 @@ export class ProfileCardsComponent {
   animalCurrentImage!: Blob;
   userImage!: any;
   animalImage!: any;
-
+  idConnected = localStorage.getItem('user_id');
   constructor(
     private route: ActivatedRoute,
     private photoService: PhotosService
   ) { }
 
   ngOnInit() {
+    
     const myUserIdPhoto = this.myUser.id_photo;
     this.photoService.getImageById(myUserIdPhoto).subscribe({
       next: (data: Blob) => {
