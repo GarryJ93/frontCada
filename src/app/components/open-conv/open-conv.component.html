@@ -5,7 +5,7 @@
 
 
   <div *ngIf="usersWithConversations.length > 0">  <div class="mb-4">
-    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher une conversation...">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher une conversation avec ...">
   </div>
     <div class="row">
       <div *ngFor="let user of filteredUsers" class="col-md-4 mb-4">
