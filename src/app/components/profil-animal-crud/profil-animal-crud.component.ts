@@ -21,6 +21,7 @@ export class ProfilAnimalCrudComponent implements OnChanges {
   isEditing = false;
   currentAnimalIndex = 0;
   numberOfAnimals!: number;
+  
 
   constructor(private animalsService: AnimalsService) {}
 
@@ -34,6 +35,14 @@ export class ProfilAnimalCrudComponent implements OnChanges {
         .subscribe({});
     }
   }
+
+  deleteMyAniaml(i:number){
+    this.animalsService.deleteAnimals(this.animalsProfil[i].id_animals).subscribe({});
+    location.reload()
+    console.log("mon animal ",this.animalsProfil[i].id_animals);
+    
+  }
+
 
   previousAnimal() {
     this.currentAnimalIndex =
@@ -53,32 +62,5 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     this.numberOfAnimals = this.animalsProfil.length;
   }
 
-  // ngOnInit(): void {
-  //   this.formProfilanimal = this.formBulder.group({
-  //     firstname: new FormControl('', Validators.required),
-  //     age: new FormControl('', Validators.required),
-  //     sex_animal: new FormControl('', Validators.required),
-  //     species: new FormControl('', Validators.required),
-  //     race: new FormControl('', Validators.required),
-  //   });
-  // }
 
-  // onSubmit() {
-  //   let profilAnimal: Animals = { ...this.formProfilanimal.value };
-  //   if (!this.formProfilanimal.valid) {
-  //     alert("le formulaire n'est pas valide");
-  //     return;
-  //   }
-
-  //   this.animalsService.addAnimals(profilAnimal).subscribe({
-  //     next: () => {
-  //       alert(`modification de ${this.profilAnimal.id_animals}est validée`);
-  //       this.formProfilanimal.reset();
-  //       this.router.navigate(['/accueil']);
-  //     },
-  //     error: (error) => {
-  //       console.error("erreur lors de l'ajout de l'utilisateur", error);
-  //     },
-  //   });
-  // }
 }
