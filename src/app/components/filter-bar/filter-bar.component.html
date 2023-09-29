@@ -37,7 +37,13 @@
     <label class="btn btn-filter" for="btncheck3">NAC</label>
 
     <div class="btn-group" role="group">
-      <button
+      <select (change)="onCheckDpt($event)" class="form-select" aria-label="Default select example">
+        <option selected>Departement</option>
+        <option *ngFor="let departement of userDpt" >{{ departement }}</option>
+
+      </select>
+
+      <!-- <button
         type="button"
         class="btn btn-filter dropdown-toggle"
         data-bs-toggle="dropdown"
@@ -47,26 +53,23 @@
       </button>
 
      <ul class="dropdown-menu">
-      <li *ngFor="let departement of userDpt">
-        <a class="dropdown-item" href="#">{{ departement }}</a>
+      <li >
+        <a class="dropdown-item" ></a>
       </li>
-    </ul>
+    </ul> -->
     </div>
     <div class="btn-group" role="group">
-      <button
-        type="button"
-        class="btn btn-filter dropdown-toggle"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+      <select (change)="onCheckGender($event)" class="form-select" aria-label="Default select example">
+        <option selected>Genre</option>
+        <option *ngFor="let gender of genderUser" >{{ gender.gender }}</option>
 
-        Genre
-      </button>
-      <ul class="dropdown-menu">
-      <li *ngFor="let gender of genderUser">
-        <a class="dropdown-item" href="#">{{ gender.gender }}</a>
-      </li>
-    </ul>
+      </select>
+
+
+
+
+
+
     </div></div>
   </div>
 </div>
