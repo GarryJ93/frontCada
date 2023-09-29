@@ -11,12 +11,12 @@ export class SexAnimalsService {
   constructor(private http: HttpClient) {}
 
   getAllSexAnimals(): Observable<SexAnimals[]> {
-    return this.http.get<SexAnimals[]>('http://localhost:3000/api/sex_animals');
+    return this.http.get<SexAnimals[]>('http://localhost:3000/api/sex-animals');
   }
 
   getSexAnimalById(id: number): Observable<SexAnimals> {
     return this.http.get<SexAnimals>(
-      `http://localhost:3000/api/sex_animals/${id}`,
+      `http://localhost:3000/api/sex-animals/${id}`,
     );
   }
 }

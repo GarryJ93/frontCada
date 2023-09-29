@@ -27,7 +27,6 @@ export class UsersService {
       )
       .pipe(
         tap((response) => {
-          console.log('mon log ', response);
           console.log(
             'REGARDE CA POUR VOIR COMMENT TU RECOIS ID DE LA PERS CONNECTER',
             response.user_id
@@ -43,7 +42,6 @@ export class UsersService {
               'Id utilisateur stocké:',
               localStorage.getItem('user_id')
             );
-            console.log('coucou', typeof response.user_id);
           }
         })
       );
@@ -64,7 +62,6 @@ export class UsersService {
     return this.http.patch<Users>(
       `http://localhost:3000/api/users/${id}`,
       updateData
-      
     );
   }
 

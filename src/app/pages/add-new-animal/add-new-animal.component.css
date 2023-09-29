@@ -1,0 +1,136 @@
+/* Réinitialisation des marges et des espacements pour tous les éléments */
+* {
+  padding: 0;
+  margin: 0;
+
+}
+
+/* Configuration du corps de la page */
+body {
+  height: 100vh;
+  width: 100%;
+  overflow-y:hidden;
+}
+
+/* Configuration du conteneur principal */
+.page_form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Configuration de l'image */
+.img_class img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 100px 100px 0px;
+}
+
+
+/* Configuration du conteneur de l'image */
+.img_class {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  /* margin-top: 50px; */
+  height: 100%;
+}
+
+
+
+/* Configuration du conteneur du formulaire */
+.form_group {
+  flex: 1;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  padding: 3%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+}
+
+.firstname textarea button{
+  border-radius: 45px;
+}
+
+.d-flex {
+  flex: 1;
+  height: 100%;
+  margin: auto 20px;
+}
+
+/* Styles du formulaire */
+form.formcontainer {
+  /* border: 5px solid #f1f1f1; */
+  text-align: center;
+  margin: 24px 50px 12px;
+  padding: 16px 0;
+}
+
+.formcontainer h1 {
+  text-align: center;
+}
+
+.formcontainer .icon {
+  font-size: 110px;
+  display: flex;
+  justify-content: center;
+  /* color: #4286f4; */
+}
+
+.formcontainer .container {
+  text-align: left;
+  padding: 16px 0;
+}
+
+.formcontainer input.form-control {
+  width: 100%;
+  padding: 16px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+}
+
+.btn {
+  background-color: #ee510e;
+  color: white;
+  padding: 14px 0;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+}
+
+.btn :hover {
+  opacity: 0.8;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_signin {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+input, select{
+  border-radius: 45px;
+  text-indent: 5%;
+}
+
+select {
+  height: 58px;
+}
+
+.mytext{
+  border-radius: 15px;
+  text-indent: 5%;
+}
+
+.validbtn{
+  border-radius: 45px;
+
+}

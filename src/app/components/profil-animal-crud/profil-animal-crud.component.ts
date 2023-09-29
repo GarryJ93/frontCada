@@ -24,8 +24,10 @@ export class ProfilAnimalCrudComponent implements OnChanges {
   numberOfAnimals!: number;
   
 
-  constructor(private animalsService: AnimalsService) {}
+  constructor(private animalsService: AnimalsService,
+    private router: Router) {}
 
+  // Passage en mode edition
   toggleEdit(i: number) {
     this.isEditing = !this.isEditing;
     console.log(this.animalsProfil[i].id_animals);
@@ -50,6 +52,15 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     }
   }
 
+  goPageAddAnimal(){
+    this.router.navigate(['/addNewAnimal'])
+  };
+
+  ngOnChanges() {
+    // Variable pour le modulo des fonctions next & previous
+    this.numberOfAnimals = this.animalsProfil.length;
+  }
+  // Méthode pour afficher la carte précédente
   previousAnimal() {
     this.currentAnimalIndex =
       (this.currentAnimalIndex - 1 + this.numberOfAnimals) %
@@ -63,37 +74,4 @@ export class ProfilAnimalCrudComponent implements OnChanges {
     console.log('ca tourne1', this.currentAnimalIndex);
     console.log('ca tourne2', this.numberOfAnimals);
   }
-
-  ngOnChanges() {
-    this.numberOfAnimals = this.animalsProfil.length;
-  }
-
-  // ngOnInit(): void {
-  //   this.formProfilanimal = this.formBulder.group({
-  //     firstname: new FormControl('', Validators.required),
-  //     age: new FormControl('', Validators.required),
-  //     sex_animal: new FormControl('', Validators.required),
-  //     species: new FormControl('', Validators.required),
-  //     race: new FormControl('', Validators.required),
-  //   });
-  // }
-
-  // onSubmit() {
-  //   let profilAnimal: Animals = { ...this.formProfilanimal.value };
-  //   if (!this.formProfilanimal.valid) {
-  //     alert("le formulaire n'est pas valide");
-  //     return;
-  //   }
-
-  //   this.animalsService.addAnimals(profilAnimal).subscribe({
-  //     next: () => {
-  //       alert(`modification de ${this.profilAnimal.id_animals}est validée`);
-  //       this.formProfilanimal.reset();
-  //       this.router.navigate(['/accueil']);
-  //     },
-  //     error: (error) => {
-  //       console.error("erreur lors de l'ajout de l'utilisateur", error);
-  //     },
-  //   });
-  // }
 }

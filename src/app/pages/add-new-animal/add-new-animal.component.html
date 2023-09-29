@@ -1,0 +1,86 @@
+<app-nav-bar></app-nav-bar>
+<div class="page_form">
+  <div class="img_class">
+    <img
+      id="photo"
+      src="../../../assets/chien-embrasse-par-couple.jpg"
+      alt="photo d'un couple qui embrasse simultanément un chien"
+    />
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6 col-sm-12 form_group p-3 mb-5 rounded">
+      <form
+        [formGroup]="addAnimal"
+        (ngSubmit)="onSubmit()"
+        class="formcontainer"
+      >
+        <h1>Ajouter mon animal</h1>
+        <div class="icon">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="container">
+          <input
+            formControlName="name"
+            class="form-control shadow"
+            id="inputName"
+            placeholder="Nom"
+          />
+
+          <input
+            formControlName="age"
+            class="form-control shadow"
+            id="inputAge"
+            placeholder="Age"
+          />
+
+          <div class="d-flex flex-row m-0 align-items-center">
+            <select
+              name="id_breed"
+              id="id_breed"
+              class="form-control shadow"
+              formControlName="id_breed"
+            >
+              <option value="">La race de mon animal</option>
+              <option *ngFor="let breed of breeds" value="{{ breed.id_breed }}">
+                {{ breed.breed }}
+              </option>
+            </select>
+
+            <select
+              name="id_sex_animal"
+              id="id_sex_animal"
+              class="form-control shadow"
+              formControlName="id_sex_animal"
+            >
+              <option value="">Le sexe de mon animal</option>
+              <option
+                *ngFor="let sex_animal of sex_Animals"
+                value="{{ sex_animal.id_sex_animal }}"
+              >
+                {{ sex_animal.sex }}
+              </option>
+            </select>
+          </div>
+
+          <input
+            formControlName="id_photo"
+            type="file"
+            (change)="onChange($event)"
+            class="form-control shadow"
+            id="inputPhoto"
+          />
+        </div>
+        <div class="btn_signin">
+          <button
+            type="submit"
+            class="btn shadow-lg validbtn"
+            [disabled]="addAnimal.invalid"
+          >
+            <strong>Ajouter votre animal</strong>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
