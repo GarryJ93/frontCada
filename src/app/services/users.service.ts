@@ -27,7 +27,6 @@ export class UsersService {
       )
       .pipe(
         tap((response) => {
-          console.log('mon log ', response);
           console.log(
             'REGARDE CA POUR VOIR COMMENT TU RECOIS ID DE LA PERS CONNECTER',
             response.user_id
@@ -43,7 +42,6 @@ export class UsersService {
               'Id utilisateur stocké:',
               localStorage.getItem('user_id')
             );
-            console.log('coucou', typeof response.user_id);
           }
         })
       );
@@ -57,12 +55,9 @@ export class UsersService {
   }
 
   modifyUsers(id: number, updateData: Users): Observable<Users> {
-    // const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('access_token') }), { headers: headers }
-    console.log("mon teste", updateData);
     return this.http.patch<Users>(
       `http://localhost:3000/api/users/${id}`,
       updateData
-      
     );
   }
 

@@ -2,7 +2,7 @@
 <div class="top d-flex justify-content-between">
     <!-- <img src="" alt="{{RecupUserProfil.id_photo}}"> -->
 
-    <div class="right">
+     <div class="right">
         <div *ngIf="!isEditing && RecupUserProfil">{{RecupUserProfil.username}}</div>
         <input *ngIf="isEditing" [(ngModel)]="RecupUserProfil.username" placeholder="nom de l'user">
 

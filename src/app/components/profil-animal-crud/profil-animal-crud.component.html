@@ -33,7 +33,7 @@
         <div *ngIf="!isEditing && animalProfil">{{animalProfil.city}}</div>
         <input *ngIf="isEditing" [(ngModel)]="animalProfil.city" placeholder="espèce de l'user"> -->
 
-            <button>Ajouter</button>
+            <button (click)="goPageAddAnimal()">Ajouter</button>
             <button (click)="toggleEdit(i)">
               {{ isEditing ? "Sauvegarder" : "Modifier" }}
             </button>
