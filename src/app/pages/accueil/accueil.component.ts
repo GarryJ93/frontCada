@@ -26,7 +26,7 @@ export class AccueilComponent {
   genderUsers!: GenderUser[];
   departementFiltered: number | undefined;
   departementSelected!: number;
-  genderFiltered: string | undefined;
+  genderFiltered: string = "Genre";
 
   constructor(
     private usersService: UsersService,
