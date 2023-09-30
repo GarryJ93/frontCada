@@ -5,7 +5,8 @@
       
           <div class="d-flex justify-content-between">
             <div>
-              <h3>Vos animaux</h3>
+              <h3 *ngIf="animalsProfil.length > 1">Vos animaux</h3>
+              <h3 *ngIf="animalsProfil.length == 1">Votre animal</h3>
             </div>
             <div>
               <button (click)="toggleEdit(i)" class="btn btn-update m-2 shadow">

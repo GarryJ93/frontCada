@@ -25,14 +25,38 @@
             class="form-control shadow"
             id="inputName"
             placeholder="Nom"
+            [ngClass]="{
+              'is-invalid':
+                addAnimal.get('name')?.touched && addAnimal.get('name')?.invalid
+            }"
           />
+          <div
+            *ngIf="
+              addAnimal.get('name')?.touched && addAnimal.get('name')?.invalid
+            "
+            class="invalid-feedback"
+          >
+            Le nom est requis.
+          </div>
 
           <input
             formControlName="age"
             class="form-control shadow"
             id="inputAge"
             placeholder="Age"
+            [ngClass]="{
+              'is-invalid':
+                addAnimal.get('age')?.touched && addAnimal.get('age')?.invalid
+            }"
           />
+          <div
+            *ngIf="
+              addAnimal.get('age')?.touched && addAnimal.get('age')?.invalid
+            "
+            class="invalid-feedback"
+          >
+            L'âge est requis.
+          </div>
 
           <div class="d-flex flex-row m-0 align-items-center">
             <select
@@ -40,18 +64,37 @@
               id="id_breed"
               class="form-control shadow"
               formControlName="id_breed"
+              [ngClass]="{
+                'is-invalid':
+                  addAnimal.get('id_breed')?.touched &&
+                  addAnimal.get('id_breed')?.invalid
+              }"
             >
               <option value="">La race de mon animal</option>
               <option *ngFor="let breed of breeds" value="{{ breed.id_breed }}">
                 {{ breed.breed }}
               </option>
             </select>
+            <div
+              *ngIf="
+                addAnimal.get('id_breed')?.touched &&
+                addAnimal.get('id_breed')?.invalid
+              "
+              class="invalid-feedback"
+            >
+              La race est requise.
+            </div>
 
             <select
               name="id_sex_animal"
               id="id_sex_animal"
               class="form-control shadow"
               formControlName="id_sex_animal"
+              [ngClass]="{
+                'is-invalid':
+                  addAnimal.get('id_sex_animal')?.touched &&
+                  addAnimal.get('id_sex_animal')?.invalid
+              }"
             >
               <option value="">Le sexe de mon animal</option>
               <option
@@ -61,6 +104,15 @@
                 {{ sex_animal.sex }}
               </option>
             </select>
+            <div
+              *ngIf="
+                addAnimal.get('id_sex_animal')?.touched &&
+                addAnimal.get('id_sex_animal')?.invalid
+              "
+              class="invalid-feedback"
+            >
+              Le sexe est requis.
+            </div>
           </div>
 
           <input
@@ -69,7 +121,22 @@
             (change)="onChange($event)"
             class="form-control shadow"
             id="inputPhoto"
+            accept="image/*"
+            [ngClass]="{
+              'is-invalid':
+                addAnimal.get('id_photo')?.touched &&
+                addAnimal.get('id_photo')?.invalid
+            }"
           />
+          <div
+            *ngIf="
+              addAnimal.get('id_photo')?.touched &&
+              addAnimal.get('id_photo')?.invalid
+            "
+            class="invalid-feedback"
+          >
+            Un fichier au format photo est requis.
+          </div>
         </div>
         <div class="btn_signin">
           <button
