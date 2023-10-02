@@ -12,6 +12,7 @@ import { ChatModalComponent } from '../chat-modal/chat-modal.component';
 export class OpenConvComponent {
   usersWithConversations: Users[] = [];
   currentUserId: String = localStorage.getItem('user_id')!;
+  searchTerm: string = '';
 
   @Input() selectedUser!: Users;
 
@@ -34,6 +35,15 @@ export class OpenConvComponent {
       windowClass: 'custom-modal-width'
 });
     modalRef.componentInstance.selectedUser = user;
+  }
+
+  get filteredUsers(): Users[] {
+    if (this.searchTerm) {
+      return this.usersWithConversations.filter(
+        user => user.username.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+    return this.usersWithConversations;
   }
 
 }
